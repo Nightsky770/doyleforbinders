@@ -3,9 +3,9 @@ The Hound of the Baskervilles for the DIY bookbinder. Illustrations by Sidney Pa
 
 Text and illustrations are in the public domain in the United States.
 
-CW: kidnapping and threatened rape, pet death, domestic abuse, animal cruelty, ethnic slur "g---y" (uncensored), 19th-century terms for specific ethnic/cultural groups.
+CW: kidnapping and threatened rape, pet death, domestic abuse, animal cruelty, ethnic slur "g---y" (uncensored), 19th-century terms for specific ethnic/cultural groups, colonialism.
 
-Grateful acknowledgment is made to photographer Peter Castleton (https://flickr.com/photos/petercastleton/) for his lovely photograph "Dartmoor Tor", a cropped version of which is used here under a CC-BY-DEED license.
+Grateful acknowledgment is made to photographer Peter Castleton (https://flickr.com/photos/petercastleton/) for his lovely photograph "Dartmoor Tor", a cropped version of which is used here under a CC-BY-2.0-DEED license.
 flickr.com/photos/petercastleton/2995927031
 
 If you are using US letter-sized paper, download the following files and print out, double-sided, flip on short side:
