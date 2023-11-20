@@ -44,26 +44,25 @@ If you are using A4 paper, download the following files and print out, double-si
 
 
 The TeX originals are included in the source directory as letterhound.tex and a4hound.tex. They expect to find their images in a subfolder called "images" (in the folder where you run TeX) and they use the following packages:
-
-graphicx
-xcolor
-fontspec
-fontenc
-makeidx
-lettrine
-scrlayer-scrpage
-pifont
-enumitem
-caption
-csquotes
-adjustbox
-babel
-ebgaramond
-afterpage
-setspace
-tocloft
+* graphicx
+* xcolor
+* fontspec
+* fontenc
+* makeidx
+* lettrine
+* scrlayer-scrpage
+* pifont
+* enumitem
+* caption
+* csquotes
+* adjustbox
+* babel
+* ebgaramond
+* afterpage
+* setspace
+* tocloft
 
 They expect the following fonts installed:
-EB Garamond
-Apex Lake: https://www.1001fonts.com/apex-lake-font.html
-Essays 1743: https://www.thibault.org/fonts/essays/
+* EB Garamond
+* Apex Lake: https://www.1001fonts.com/apex-lake-font.html
+* Essays 1743: https://www.thibault.org/fonts/essays/
