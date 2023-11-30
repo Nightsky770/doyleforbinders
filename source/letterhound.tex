@@ -20,12 +20,18 @@
 \usepackage{afterpage}
 \usepackage{setspace}
 \usepackage{tocloft}
+\usepackage[pass]{geometry}
+\usepackage{microtype}
 %\usepackage[showframe]{geometry}
 
-
+\newcommand{\HUGE}{\fontsize{50}{60}\selectfont}
+\newcommand{\moderatelyhuge}{\fontsize{50}{60}\selectfont}
+\newcommand{\reasonablyhuge}{\fontsize{30}{40}\selectfont}
 
 \newfontfamily\booktitlefont[RawFeature={-ss02},LetterSpace=40,WordSpace=6]{EB Garamond}
 \newfontfamily\spacedfont[RawFeature={-ss02},LetterSpace=20,WordSpace=3]{EB Garamond}
+
+%\newfontfamily\mytitlefont{WitchkinFree-axXAE.ttf}
 
 \newfontfamily\oldfont{Essays1743-vd9M.ttf}
 %\newfontfamily\lettrinefont{EBGaramond-Initials.otf}
@@ -52,6 +58,7 @@
 \headsep=10pt
 \headheight=45pt
 \footskip=30pt
+%\raggedbottom
 
 \setkomafont{chapter}{\chapterfont\Huge\bfseries}
 \renewcommand*{\chaptermarkformat}{%
@@ -69,33 +76,50 @@
 \KOMAoptions{headings=openany}
 \renewcommand*\raggedchapter{\centering}
 \thispagestyle{empty}
-\begin{figure}[p]
-\centering
-%\begin{minipage}[c]{1.2\linewidth}
-\includegraphics[width=1.1\linewidth]{frontispiece}
-%\end{minipage}
-\end{figure}
+%\begin{figure}[p]
+%\centering
+%%\begin{minipage}[c]{1.2\linewidth}
+%\includegraphics[width=1.1\linewidth]{frontispiece}
+%%\end{minipage}
+%\end{figure}
+
+  \begin{titlepage}
+   \recalctypearea
+ \newgeometry{left=10mm,right=10mm,top=7mm, bottom=7mm}
+
+  \begin{center}\setstretch{1.8}\scshape\bfseries
+{\setstretch{1.8}\HUGE The Hound}\\
+\vspace{0.5cm}
+{\setstretch{1.8}\moderatelyhuge of the}\\
+\vspace{0.2cm}
+{\HUGE Baskervilles}\\
+\vspace*{1cm}
+ \includegraphics[width=.8\linewidth]{houndfront}
+ \end{center}
+ \vspace*{.1cm}
+ \begin{center}\setstretch{1.5}\scshape
+{\setstretch{1.5}\reasonablyhuge Sir Arthur Conan Doyle}\\
+\vspace{0.5cm}
+{\setstretch{1.5}\Huge Illustrated by Sidney Paget}
+\end{center}
+  \end{titlepage}
 
 
-%  \begin{titlepage}
-%    \vspace*{\fill}
-%    \begin{center}
-%      {Huge The Hound of the Baskervilles}\\[0.5cm]
-%      {Large Sir Arthur Conan Doyle}\\[0.4cm]
-%    \end{center}
-%    \vspace*{\fill}
-%  \end{titlepage}
+  \recalctypearea
+\restoregeometry
 
 \chapter*{Dedication}
+\thispagestyle{empty}
+My dear Robinson,\\
 
-My dear Robinson,
+It was to your account of a West-Country legend that this tale owes its inception. For this and for your help in the details all thanks.
 
-    It was to your account of a West-Country legend that this tale owes its inception. For this and for your help in the details all thanks.
+\begin{flushright}
+Yours most truly,\\
+\textsc{A. Conan Doyle.}
+\end{flushright}
 
-Yours most truly,\\        
-A. Conan Doyle.    
-
-Hindhead,\\
+{\noindent Hindhead,\\}
     Haslemere.
   
 \clearpage
@@ -345,7 +369,7 @@ The company had come to a halt, more sober men, as you may guess, than when they
 Such is the tale, my sons, of the coming of the hound which is said to have plagued the family so sorely ever since. If I have set it down it is because that which is clearly known hath less terror than that which is but hinted at and guessed. Nor can it be denied that many of the family have been unhappy in their deaths, which have been sudden, bloody, and myﬅerious. Yet may we shelter ourselves in the infinite goodness of Providence, which would not forever punish the innocent beyond that third or fourth generation which is threatened in Holy Writ. To that Providence, my sons, I hereby commend you, and I counsel you by way of caution to forbear from crossing the moor in those dark hours when the powers of evil are exalted.
 
 [This from Hugo Baskerville to his sons Rodger and John, with inﬅructions that they say nothing thereof to their siﬅer Elizabeth.]
-\enlargethispage{\baselineskip}
+%\enlargethispage{\baselineskip}
 
 \vfill
 
@@ -394,7 +418,7 @@ Dr Mortimer refolded his paper and replaced it in his pocket.
 
 \enquote{In doing so,} said Dr Mortimer, who had begun to show signs of some strong emotion, \enquote{I am telling that which I have not confided to anyone. My motive for withholding it from the coroner's inquiry is that a man of science shrinks from placing himself in the public position of seeming to indorse a popular superstition. I had the further motive that Baskerville Hall, as the paper says, would certainly remain untenanted if anything were done to increase its already rather grim reputation. For both these reasons I thought that I was justified in telling rather less than I knew, since no practical good could result from it, but with you there is no reason why I should not be perfectly frank.}
 
-\enquote{The moor is very sparsely inhabited, and those who live near each other are thrown very much together. For this reason I saw a good deal of Sir Charles Baskerville. With the exception of Mr Frankland, of Lafter Hall, and Mr Stapleton, the naturalist, there are no other men of education within many miles. Sir Charles was a retiring man, but the chance of his illness brought us together, and a community of interests in science kept us so. He had brought back much scientific information from South Africa, and many a charming evening we have spent together discussing the comparative anatomy of the Bushman\footnote{The San people of central south Africa.} and the Hottentot\footnote{The Khoi people of the western Cape region of South Africa.}.}
+\enquote{The moor is very sparsely inhabited, and those who live near each other are thrown very much together. For this reason I saw a good deal of Sir Charles Baskerville. With the exception of Mr Frankland, of Lafter Hall, and Mr Stapleton, the naturalist, there are no other men of education within many miles. Sir Charles was a retiring man, but the chance of his illness brought us together, and a community of interests in science kept us so. He had brought back much scientific information from South Africa, and many a charming evening we have spent together discussing the comparative anatomy of the Bushman\footnote{The San people of south-central Africa.} and the Hottentot\footnote{The Khoi people of the western Cape region of South Africa.}.}
 
 \enquote{Within the last few months it became increasingly plain to me that Sir Charles's nervous system was strained to the breaking point. He had taken this legend which I have read you exceedingly to hear\textemdash so much so that, although he would walk in his own grounds, nothing would induce him to go out upon the moor at night. Incredible as it may appear to you, Mr Holmes, he was honestly convinced that a dreadful fate overhung his family, and certainly the records which he was able to give of his ancestors were not encouraging. The idea of some ghastly presence constantly haunted him, and on more than one occasion he has asked me whether I had on my medical journeys at night ever seen any strange creature or heard the baying of a hound. The latter question he put to me several times, and always with a voice which vibrated with excitement.}
 
@@ -674,7 +698,7 @@ He laughed at my bewildered expression.
 \caption{That is Baskerville Hall in the middle.}
 \end{figure}
 
-\enquote{Exactly. I fancy the Yew Alley, though not marked under that name, must stretch along this line, with the moor, as you perceive, upon the right of it. This small clump of buildings here is the hamlet of Grimpen, where our friend Dr Mortimer has his headquarters. Within a radius of five miles there are, as you see, only a very few scattered dwellings. Here is Lafter Hall, which was mentioned in the narrative. There is a house indicated here which may be the residence of the naturalist\textemdash Stapleton, if I remember right, was his name. Here are two moorland farm-houses, High Tor and Foulmire. Then fourteen miles away the great convict prison of Princetown.\footnote{Today called HM Prison Dartmoor.} Between and around these scattered points extends the desolate, lifeless moor. This, then, is the stage upon which tragedy has been played, and upon which we may help to play it again.}
+\enquote{Exactly. I fancy the Yew Alley, though not marked under that name, must stretch along this line, with the moor, as you perceive, upon the right of it. This small clump of buildings here is the hamlet of Grimpen, where our friend Dr Mortimer has his headquarters. Within a radius of five miles there are, as you see, only a very few scattered dwellings. Here is Lafter Hall, which was mentioned in the narrative. There is a house indicated here which may be the residence of the naturalist\textemdash Stapleton, if I remember right, was his name. Here are two moorland farm-houses, High Tor and Foulmire. Then fourteen miles away the great convict prison of Princetown. Between and around these scattered points extends the desolate, lifeless moor. This, then, is the stage upon which tragedy has been played, and upon which we may help to play it again.}
 
 \enquote{It must be a wild place.}
 
@@ -956,7 +980,7 @@ At that instant I was aware of a bushy black beard and a pair of piercing eyes t
 
 \enquote{What a pity we did not get the number!}
 
-\enquote{My dear Watson, clumsy as I have been, you surely do not seriously imagine that I neglected to get the number? No. 2704 is our man. But that is no use to us for the moment.}
+\enquote{My dear Watson, clumsy as I have been, you surely do not seriously imagine that I neglected to get the number? № 2704 is our man. But that is no use to us for the moment.}
 
 \enquote{I fail to see how you could have done more.}
 
@@ -1010,7 +1034,7 @@ A lad of fourteen, with a bright, keen face, had obeyed the summons of the manag
 
 \enquote{Yes, sir.}
 
-\enquote{In each case the outside porter will send for the hall porter, to whom also you will give a shilling. Here are twenty-three shillings. You will then learn in possibly twenty cases out of the twenty-three that the waste of the day before has been burned or removed. In the three other cases you will be shown a heap of paper and you will look for this page of the \textit{Times} among it. The odds are enormously against your finding it. There are ten shillings over in case of emergencies. Let me have a report by wire at Baker Street before evening. And now, Watson, it only remains for us to find out by wire the identity of the cabman, No. 2704, and then we will drop into one of the Bond Street picture galleries and fill in the time until we are due at the hotel.}
+\enquote{In each case the outside porter will send for the hall porter, to whom also you will give a shilling. Here are twenty-three shillings. You will then learn in possibly twenty cases out of the twenty-three that the waste of the day before has been burned or removed. In the three other cases you will be shown a heap of paper and you will look for this page of the \textit{Times} among it. The odds are enormously against your finding it. There are ten shillings over in case of emergencies. Let me have a report by wire at Baker Street before evening. And now, Watson, it only remains for us to find out by wire the identity of the cabman, № 2704, and then we will drop into one of the Bond Street picture galleries and fill in the time until we are due at the hotel.}
 
 \chapter{Three Broken Threads}
 \lettrine[lines=1]{S}{herlock} Holmes had, in a very remarkable degree, the power of detaching his mind at will. For two hours the strange business in which we had been involved appeared to be forgotten, and he was entirely absorbed in the pictures of the modern Belgian masters. He would talk of nothing but art, of which he had the crudest ideas, from our leaving the gallery until we found ourselves at the Northumberland Hotel.
@@ -1171,7 +1195,8 @@ Holmes raised his eyebrows in surprise. \enquote{I had no idea that so gigantic 
 
 \enquote{Dr Mortimer returns with me.}
 
-\begin{figure}[tbhp]
+
+\begin{figure}[t!h]
 \centering
 \includegraphics[width=.8\linewidth]{05_proposition}
 \caption{The proposition took me completely by surprise}
@@ -1223,14 +1248,24 @@ We had risen to depart when Baskerville gave a cry, of triumph, and diving into 
 The German was sent for but professed to know nothing of the matter, nor could any inquiry clear it up. Another item had been added to that constant and apparently purposeless series of small mysteries which had succeeded each other so rapidly. Setting aside the whole grim story of Sir Charles's death, we had a line of inexplicable incidents all within the limits of two days, which included the receipt of the printed letter, the black-bearded spy in the hansom, the loss of the new brown boot, the loss of the old black boot, and now the return of the new brown boot. Holmes sat in silence in the cab as we drove back to Baker Street, and I knew from his drawn brows and keen face that his mind, like my own, was busy in endeavouring to frame some scheme into which all these strange and apparently disconnected episodes could be fitted. All afternoon and late into the evening he sat lost in tobacco and thought.
 
 Just before dinner two telegrams were handed in. The first ran:
-
-\textsc{Have just heard that Barrymore is at the Hall.\\
-\textemdash \begin{small}BASKERVILLE.\end{small}} 
+\begin{samepage}
+\blockquote{
+\textsc{Have just heard that Barrymore is at the Hall.}
+\begin{flushright}
+\textemdash {\small\scshape BASKERVILLE.}
+\end{flushright} 
+}
+\end{samepage}
 
 The second:
-
-\textsc{Visited twenty-three hotels as directed, but sorry, to report unable to trace cut sheet of Times.\\
-\textemdash  \begin{small}CARTWRIGHT.\end{small}}
+\begin{samepage}
+\blockquote{
+\textsc{Visited twenty-three hotels as directed, but sorry, to report unable to trace cut sheet of Times.}
+\begin{flushright}
+\textemdash {\small\scshape CARTWRIGHT.}
+\end{flushright}
+}
+\end{samepage}
 
 \enquote{There go two of my threads, Watson. There is nothing more stimulating than a case where everything goes against you. We must cast round for another scent.}
 
@@ -1482,16 +1517,22 @@ I seemed to discern some signs of emotion upon the butler's white face.
 \enquote{I have no doubt, sir, that we shall succeed in establishing ourselves in some business. Sir Charles's generosity has given us the means to do so. And now, sir, perhaps I had best show you to your rooms.}
 
 A square balustraded gallery ran round the top of the old hall, approached by a double stair. From this central point two long corridors extended the whole length of the building, from which all the bedrooms opened. My own was in the same wing as Baskerville's and almost next door to it. These rooms appeared to be much more modern than the central part of the house, and the bright paper and numerous candles did something to remove the sombre impression which our arrival had left upon my mind.
+\begin{wrapfigure}[18]{O}{0.5\textwidth}
+\centering
+\includegraphics[width=0.5\textwidth]{06_diningroom}
+\caption{The dining-room was a place of shadow and gloom.}
+\end{wrapfigure}
 
 But the dining-room which opened out of the hall was a place of shadow and gloom. It was a long chamber with a step separating the dais where the family sat from the lower portion reserved for their dependents. At one end a minstrel's gallery overlooked it. Black beams shot across above our heads, with a smoke-darkened ceiling beyond them. With rows of flaring torches to light it up, and the colour and rude hilarity of an old-time banquet, it might have softened; but now, when two black-clothed gentlemen sat in the little circle of light thrown by a shaded lamp, one's voice became hushed and one's spirit subdued. A dim line of ancestors, in every variety of dress, from the Elizabethan knight to the buck of the Regency, stared down upon us and daunted us by their silent company. We talked little, and I for one was glad when the meal was over and we were able to retire into the modern billiard-room and smoke a cigarette.
 
 \enquote{My word, it isn't a very cheerful place,} said Sir Henry. \enquote{I suppose one can tone down to it, but I feel a bit out of the picture at present. I don't wonder that my uncle got a little jumpy if he lived all alone in such a house as this. However, if it suits you, we will retire early to-night, and perhaps things may seem more cheerful in the morning.}
 
-\begin{figure}[tbh]
-\centering
-\includegraphics[width=0.6\textwidth]{06_diningroom}
-\caption{The dining-room was a place of shadow and gloom.}
-\end{figure}
+%
+%\begin{figure}[tbh]
+%\centering
+%\includegraphics[width=0.5\textwidth]{06_diningroom}
+%\caption{The dining-room was a place of shadow and gloom.}
+%\end{figure}
 
 I drew aside my curtains before I went to bed and looked out from my window. It opened upon the grassy space which lay in front of the hall door. Beyond, two copses of trees moaned and swung in a rising wind. A half moon broke through the rifts of racing clouds. In its cold light I saw beyond the trees a broken fringe of rocks, and the long, low curve of the melancholy moor. I closed the curtain, feeling that my last impression was in keeping with the rest.
 
@@ -1630,11 +1671,11 @@ Something brown was rolling and tossing among the green sedges. Then a long, ago
 
 \enquote{Yes, there are one or two paths which a very active man can take. I have found them out.}
 
-\begin{figure}[tbhp]
-\centering
-\includegraphics[width=.7\linewidth]{07_greatmire}
-\caption*{That is the great Grimpen Mire}
-\end{figure}
+%\begin{figure}[tbhp]
+%\centering
+%\includegraphics[width=.7\linewidth]{07_greatmire}
+%\caption*{That is the great Grimpen Mire}
+%\end{figure}
 
 \afterpage{\clearpage}
 
@@ -1860,6 +1901,7 @@ I have told you that the corridor is broken by the balcony which runs round the 
 \includegraphics[width=.7\linewidth]{08_candle}
 \caption{He stared out into the blackness}
 \end{wrapfigure}
+
 
 Barrymore was crouching at the window with the candle held against the glass. His profile was half turned towards me, and his face seemed to be rigid with expectation as he stared out into the blackness of the moor. For some minutes he stood watching intently. Then he gave a deep groan and with an impatient gesture he put out the light. Instantly I made my way back to my room, and very shortly came the stealthy steps passing once more upon their return journey. Long afterwards when I had fallen into a light sleep I heard a key turn somewhere in a lock, but I could not tell whence the sound came. What it all means I cannot guess, but there is some secret business going on in this house of gloom which sooner or later we shall get to the bottom of. I do not trouble you with my theories, for you asked me to furnish you only with facts. I have had a long talk with Sir Henry this morning, and we have made a plan of campaign founded upon my observations of last night. I will not speak about it just now, but it should make my next report interesting reading.
 
@@ -2171,12 +2213,19 @@ I wished to go in that direction and to search the tor, but it was some distance
 
 \chapter{Extract from the Diary of Dr Watson}
 \lettrine[lines=1]{S}{o} far I have been able to quote from the reports which I have forwarded during these early days to Sherlock Holmes. Now, however, I have arrived at a point in my narrative where I am compelled to abandon this method and to trust once more to my recollections, aided by the diary which I kept at the time. A few extracts from the latter will carry me on to those scenes which are indelibly fixed in every detail upon my memory. I proceed, then, from the morning which followed our abortive chase of the convict and our other strange experiences upon the moor.
+\vfill
 
 \textsc{October 16\textsuperscript{th}.}\textemdash A dull and foggy day with a drizzle of rain. The house is banked in with rolling clouds, which rise now and then to show the dreary curves of the moor, with thin, silver veins upon the sides of the hills, and the distant boulders gleaming where the light strikes upon their wet faces. It is melancholy outside and in. The baronet is in a black reaction after the excitements of the night. I am conscious myself of a weight at my heart and a feeling of impending danger\textemdash ever present danger, which is the more terrible because I am unable to define it.
 
 And have I not cause for such a feeling? Consider the long sequence of incidents which have all pointed to some sinister influence which is at work around us. There is the death of the last occupant of the Hall, fulfilling so exactly the conditions of the family legend, and there are the repeated reports from peasants of the appearance of a strange creature upon the moor. Twice I have with my own ears heard the sound which resembled the distant baying of a hound. It is incredible, impossible, that it should really be outside the ordinary laws of nature. A spectral hound which leaves material footmarks and fills the air with its howling is surely not to be thought of. Stapleton may fall in with such a superstition, and Mortimer also; but if I have one quality upon earth it is common-sense, and nothing will persuade me to believe in such a thing. To do so would be to descend to the level of these poor peasants, who are not content with a mere fiend dog but must needs describe him with hell-fire shooting from his mouth and eyes. Holmes would not listen to such fancies, and I am his agent. But facts are facts, and I have twice heard this crying upon the moor. Suppose that there were really some huge hound loose upon it; that would go far to explain everything. But where could such a hound lie concealed, where did it get its food, where did it come from, how was it that no one saw it by day? It must be confessed that the natural explanation offers almost as many difficulties as the other. And always, apart from the hound, there is the fact of the human agency in London, the man in the cab, and the letter which warned Sir Henry against the moor. This at least was real, but it might have been the work of a protecting friend as easily as of an enemy. Where is that friend or enemy now? Has he remained in London, or has he followed us down here? Could he\textemdash could he be the stranger whom I saw upon the tor?
 
 It is true that I have had only the one glance at him, and yet there are some things to which I am ready to swear. He is no one whom I have seen down here, and I have now met all the neighbours. The figure was far taller than that of Stapleton, far thinner than that of Frankland. Barrymore it might possibly have been, but we had left him behind us, and I am certain that he could not have followed us. A stranger then is still dogging us, just as a stranger dogged us in London. We have never shaken him off. If I could lay my hands upon that man, then at last we might find ourselves at the end of all our difficulties. To this one purpose I must now devote all my energies.
+
+\begin{wrapfigure}[18]{O}{0.6\textwidth}
+\centering
+\includegraphics[width=.7\linewidth]{10_butlerstand}
+\caption{The butler was standing very pale but very collected before us.}
+\end{wrapfigure}
 
 My first impulse was to tell Sir Henry all my plans. My second and wisest one is to play my own game and speak as little as possible to anyone. He is silent and distrait. His nerves have been strangely shaken by that sound upon the moor. I will say nothing to add to his anxieties, but I will take my own steps to attain my own end.
 
@@ -2186,17 +2235,17 @@ We had a small scene this morning after breakfast. Barrymore asked leave to spea
 
 The butler was standing very pale but very collected before us.
 
-\begin{figure}[tbh]
-\centering
-\includegraphics[width=.6\linewidth]{10_butlerstand}
-\caption{The butler was standing very pale but very collected before us.}
-\end{figure}
+%\begin{figure}[tbh]
+%\centering
+%\includegraphics[width=.6\linewidth]{10_butlerstand}
+%\caption{The butler was standing very pale but very collected before us.}
+%\end{figure}
 
 \enquote{I may have spoken too warmly, sir,} said he, \enquote{and if I have, I am sure that I beg your pardon. At the same time, I was very much surprised when I heard you two gentlemen come back this morning and learned that you had been chasing Selden. The poor fellow has enough to fight against without my putting more upon his track.}
 
 \enquote{If you had told us of your own free will it would have been a different thing,} said the baronet, \enquote{you only told us, or rather your wife only told us, when it was forced from you and you could not help yourself.}
 
-\enquote{I didn't think you would have taken advantage of it, Sir Henry\textemdash indeed I didn't.}
+\enquote{I didn't think you would have taken advantage of it, Sir Henry\\ \textemdash indeed I didn't.}
 
 \enquote{The man is a public danger. There are lonely houses scattered over the moor, and he is a fellow who would stick at nothing. You only want to get a glimpse of his face to see that. Look at Mr Stapleton's house, for example, with no one but himself to defend it. There's no safety for anyone until he is under lock and key.}
 
@@ -2274,11 +2323,13 @@ The baronet and I were both upon our feet. \enquote{Do you know how he died?}
 
 I went at once to my room and drew up my report of the morning's conversation for Holmes. It was evident to me that he had been very busy of late, for the notes which I had from Baker Street were few and short, with no comments upon the information which I had supplied and hardly any reference to my mission. No doubt his blackmailing case is absorbing all his faculties. And yet this new factor must surely arrest his attention and renew his interest. I wish that he were here.
 
+~\\
+
 \textsc{October 17\textsuperscript{th}.}\textemdash All day to-day the rain poured down, rustling on the ivy and dripping from the eaves. I thought of the convict out upon the bleak, cold, shelterless moor. Poor devil! Whatever his crimes, he has suffered something to atone for them. And then I thought of that other one\textemdash the face in the cab, the figure against the moon. Was he also out in that deluged\textemdash the unseen watcher, the man of darkness? In the evening I put on my waterproof and I walked far upon the sodden moor, full of dark imaginings, the rain beating upon my face and the wind whistling about my ears. God help those who wander into the great mire now, for even the firm uplands are becoming a morass. I found the black tor upon which I had seen the solitary watcher, and from its craggy summit I looked out myself across the melancholy downs. Rain squalls drifted across their russet face, and the heavy, slate-coloured clouds hung low over the landscape, trailing in gray wreaths down the sides of the fantastic hills. In the distant hollow on the left, half hidden by the mist, the two thin towers of Baskerville Hall rose above the trees. They were the only signs of human life which I could see, save only those prehistoric huts which lay thickly upon the slopes of the hills. Nowhere was there any trace of that lonely man whom I had seen on the same spot two nights before.
 
 \begin{figure}[tbph]
 \centering
-\includegraphics[width=1.1\linewidth]{craggy}
+\includegraphics[width=1\linewidth]{craggy}
 \caption{From its craggy summit I looked out myself across the melancholy downs.}
 \end{figure}
 
@@ -2338,7 +2389,7 @@ I sat with my coffee-cup halfway to my lips and stared at Barrymore.
 
 \begin{figure}[tbh]
 \centering
-\includegraphics[width=.8\linewidth]{09_anotherman}
+\includegraphics[width=.7\linewidth]{09_anotherman}
 \caption{\enquote{You know that there is another man then?}}
 \end{figure}
 
@@ -3043,7 +3094,7 @@ I could see as he looked down that he was repressing some internal emotion. His 
 
 \enquote{Who is the gentleman with the telescope?}
 
-\enquote{That is Rear-Admiral Baskerville, who served under Rodney\footnote{Admiral George Brydges Rodney, 1st Baron Rodney, KB (1718-1792).} in the West Indies\footnote{Rodney's fleet saw a great deal of action in the Caribbean, including the invasion of Martinique (1762), part of the Seven Years' War; the Battle of Saintes (1782), part of the American Revolutionary War; and the capture of Sint Eustatius (1781), part of the Fourth Anglo-Dutch War.}. The man with the blue coat and the roll of paper is Sir William Baskerville, who was Chairman of Committees of the House of Commons under Pitt\footnote{William Pitt the Younger (1759-1806) was Prime Minister of Great Britain, then of the United Kingdom, between 1783 and 1806.}.}
+\enquote{That is Rear-Admiral Baskerville, who served under Rodney\footnote{Admiral George Brydges Rodney, 1st Baron Rodney, KB (1718-1792).} in the West Indies\footnote{Rodney's fleet saw a great deal of action in the Caribbean, including the invasion of Martinique (1762), part of the Seven Years' War; the capture of Sint Eustatius (1781), part of the Fourth Anglo-Dutch War; and the Battle of Saintes (1782), part of the American Revolutionary War.}. The man with the blue coat and the roll of paper is Sir William Baskerville, who was Chairman of Committees of the House of Commons under Pitt\footnote{William Pitt the Younger (1759-1806) was Prime Minister of Great Britain, then of the United Kingdom, between 1783 and 1806.}.}
 
 \enquote{And this Cavalier opposite to me\textemdash the one with the black velvet and the lace?}
 
@@ -3165,7 +3216,15 @@ I was much astounded by this programme, though I remembered that Holmes had said
 
 \enquote{And ask at the station office if there is a message for me.}
 
-The boy returned with a telegram, which Holmes handed to me. It ran: \textsc{Wire received. Coming down with unsigned warrant. Arrive five-forty.\textemdash \begin{small}LESTRADE\end{small}.}
+The boy returned with a telegram, which Holmes handed to me. It ran: 
+\begin{samepage}
+\blockquote{
+\textsc{Wire received. Coming down with unsigned warrant. Arrive five-forty.}
+\begin{flushright}
+\textemdash  {\small\scshape LESTRADE.}
+\end{flushright}
+}
+\end{samepage}
 
 \enquote{That is in answer to mine of this morning. He is the best of the professionals, I think, and we may need his assistance. Now, Watson, I think that we cannot employ our time better than by calling upon your acquaintance, Mrs Laura Lyons.}
 
@@ -3188,7 +3247,7 @@ Mrs Laura Lyons was in her office, and Sherlock Holmes opened his interview with
 \includegraphics[width=.7\linewidth]{13_sprang}
 \caption{The lady sprang from her chair}
 \end{figure}
-\afterpage{\clearpage}
+%\afterpage{\clearpage}
 
 The lady sprang from her chair.
 
@@ -3203,6 +3262,12 @@ Mrs Lyons had resumed her seat. Her hands were grasping the arms of her chair, a
 Sherlock Holmes shrugged his shoulders.
 
 \enquote{Prove it to me! Prove it to me! And if you can do so\textemdash !} The fierce flash of her eyes said more than any words.
+
+%\begin{wrapfigure}{O}{0.6\linewidth}
+%\centering
+%\includegraphics[width=0.6\linewidth]{02_bodydiscovered}
+%\caption{His body was discovered}
+%\end{wrapfigure}
 
 \enquote{I have come prepared to do so,} said Holmes, drawing several papers from his pocket. \enquote{Here is a photograph of the couple taken in York four years ago. It is indorsed \enquote{Mr and Mrs Vandeleur,} but you will have no difficulty in recognizing him, and her also, if you know her by sight. Here are three written descriptions by trustworthy witnesses of Mr and Mrs Vandeleur, who at that time kept St Oliver's private school. Read them and see if you can doubt the identity of these people.}
 
@@ -3558,15 +3623,15 @@ Many traces we found of him in the bog-girt island where he had hid his savage a
 
 \enquote{No doubt. There only remains one difficulty. If Stapleton came into the succession, how could he explain the fact that he, the heir, had been living unannounced under another name so close to the property? How could he claim it without causing suspicion and inquiry?}
 
-\enquote{It is a formidable difficulty, and I fear that you ask too much when you expect me to solve it. The past and the present are within the field of my inquiry, but what a man may do in the future is a hard question to answer. Mrs Stapleton had heard her husband discuss the problem on several occasions. There were three possible courses. He might claim the property from South America, establish his identity before the British authorities there and so obtain the fortune without ever coming to England at all; or he might adopt an elaborate disguise during the short time that he need be in London; or, again, he might furnish an accomplice with the proofs and papers, putting him in as heir, and retaining a claim upon some proportion of his income. We cannot doubt from what we know of him that he would have found some way out of the difficulty. And now, my dear Watson, we have had some weeks of severe work, and for one evening, I think, we may turn our thoughts into more pleasant channels. I have a box for \textit{Les Huguenots}\footnote{Opera by Giacomo Meyerbeer, premiered in 1836. A Hugenot is a French Protestant.}. Have you heard the De Reszkes\footnote{Jean (1850-1904; tenor), Édouard (1853-1917; bass), and Josephine (1855-1891; soprano) de Reszke, sibling opera singers.}? Might I trouble you then to be ready in half an hour, and we can stop at Marcini's for a little dinner on the way?}
+\enquote{It is a formidable difficulty, and I fear that you ask too much when you expect me to solve it. The past and the present are within the field of my inquiry, but what a man may do in the future is a hard question to answer. Mrs Stapleton had heard her husband discuss the problem on several occasions. There were three possible courses. He might claim the property from South America, establish his identity before the British authorities there and so obtain the fortune without ever coming to England at all; or he might adopt an elaborate disguise during the short time that he need be in London; or, again, he might furnish an accomplice with the proofs and papers, putting him in as heir, and retaining a claim upon some proportion of his income. We cannot doubt from what we know of him that he would have found some way out of the difficulty. And now, my dear Watson, we have had some weeks of severe work, and for one evening, I think, we may turn our thoughts into more pleasant channels. I have a box for \textit{Les Huguenots}\footnote{Opera by Giacomo Meyerbeer (1791-1864), premiered in 1836. Hugenots are French Protestants.}. Have you heard the De Reszkes\footnote{Jean (1850-1904; tenor), Édouard (1853-1917; bass), and Josephine (1855-1891; soprano) de Reszke, sibling opera singers.}? Might I trouble you then to be ready in half an hour, and we can stop at Marcini's for a little dinner on the way?}
 
 \centering
 \includegraphics[width=0.9\linewidth]{theend}
-%\clearpage
+\afterpage{\clearpage}
 
 \KOMAoptions{headings=openright}
 %\KOMAoptions{DIV=default}
-\pagestyle{empty}
+
 
 \vspace*{\fill}
 \begin{figure}[p]
@@ -3575,6 +3640,7 @@ Many traces we found of him in the bog-girt island where he had hid his savage a
   \label{photo}
 \end{figure}
 \vspace*{\fill}
+
 
 %\begin{figure}[p]
 %\centering
@@ -3589,7 +3655,7 @@ Many traces we found of him in the bog-girt island where he had hid his savage a
 
 \chapter*{Colophon}
 
-\pagestyle{empty}
+
 
 \centering
 
@@ -3607,5 +3673,5 @@ Photograph \enquote{Dartmoor Tor} on page \pageref{photo} was cropped from an or
 flickr.com/photos/petercastleton/2995927031
 \vfill
 Typeset in \LaTeX{}.
-\pagestyle{empty}
+\thispagestyle{empty}
 \end{document}
