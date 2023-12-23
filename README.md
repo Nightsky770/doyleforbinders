@@ -42,25 +42,31 @@ If you are using A4 paper, download the following files and print out, double-si
 * hounda4.signature14.pdf
 
 The TeX originals are included in the source directory as letterhound.tex and a4hound.tex. They expect to find their images in a subfolder called "images" (in the folder where you run TeX) and they use the following packages:
+* babel
 * graphicx
+* lettrine
 * xcolor
 * fontspec
-* fontenc
+* fontenc 
 * makeidx
-* lettrine
 * scrlayer-scrpage
 * pifont
 * enumitem
 * caption
 * csquotes
 * adjustbox
-* babel
 * ebgaramond
+* wrapfig
 * afterpage
 * setspace
 * tocloft
+* geometry
+* microtype
+* nowidow
+
 
 They expect the following fonts installed:
 * EB Garamond
 * Apex Lake: https://www.1001fonts.com/apex-lake-font.html
 * Essays 1743: https://www.thibault.org/fonts/essays/
+* * IMPORTANT: must be version 2.0 or above in order to get the emdash
