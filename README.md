@@ -8,7 +8,6 @@ flickr.com/photos/petercastleton/2995927031
 Content warnings: kidnapping, threatened rape, pet death, domestic abuse, animal cruelty, ethnic slur "g---y" (uncensored), 19th-century terms for specific ethnic/cultural groups, colonialism.
 
 If you are using US letter-sized paper, download the following files and print out, double-sided, flip on short side:
-* houndletter.signature0.pdf
 * houndletter.signature1.pdf
 * houndletter.signature2.pdf
 * houndletter.signature3.pdf
@@ -25,7 +24,6 @@ If you are using US letter-sized paper, download the following files and print o
 * houndletter.signature14.pdf
 
 If you are using A4 paper, download the following files and print out, double-sided, flip on short side:
-* hounda4.signature0.pdf
 * hounda4.signature1.pdf
 * hounda4.signature2.pdf
 * hounda4.signature3.pdf
