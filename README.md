@@ -5,7 +5,7 @@ Text and illustrations are in the public domain in the United States, with the e
 
 flickr.com/photos/petercastleton/2995927031
 
-Content warnings: kidnapping, threatened rape, pet death, domestic abuse, animal cruelty, ethnic slur "g---y" (uncensored), 19th-century terms for specific ethnic/cultural groups, colonialism.
+Content warnings: kidnapping, threatened rape, pet death, domestic abuse, animal cruelty, ethnic slur "g---y" (uncensored), 19th-century terms for specific ethnic/cultural groups, colonialism. And murder, obviously.
 
 If you are using US letter-sized paper, download the following files and print out, double-sided, flip on short side:
 * houndletter.signature1.pdf
