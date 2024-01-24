@@ -1,0 +1,216 @@
+\documentclass[
+%paper=5.5in:8.5in,
+paper=a5,
+BCOR=7mm,
+twoside,
+DIV=calc,
+12pt,
+usegeometry,
+chapterprefix,
+endperiod,
+headings=big]{scrbook} % Document font size and paper size
+
+%\documentclass[paper=5.5in:8.5in,BCOR=15mm,twoside,DIV=calc,headinclude=off,openany]{scrbook} % Document font size and paper size
+
+\usepackage{polyglossia}
+\usepackage{graphicx}
+\usepackage{lettrine}
+\usepackage{xcolor}
+\usepackage{fontspec}
+%\usepackage[utf8]{inputenc} 
+\usepackage[T1]{fontenc} % International character encodings
+\usepackage{makeidx}
+\usepackage{scrlayer-scrpage}
+\usepackage{pifont}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{csquotes}
+\usepackage[export]{adjustbox}
+\usepackage{ebgaramond}
+\usepackage{wrapfig}
+\usepackage{afterpage}
+\usepackage{setspace}
+\usepackage[pass]{geometry}
+\usepackage{microtype}
+\usepackage[all]{nowidow}
+%\usepackage[showframe]{geometry}
+
+\newcommand\longdash{\mbox{---\,}\ignorespaces{}}
+
+\setdefaultlanguage[variant=uk]{english}
+\newcommand{\HUGE}{\fontsize{50}{60}\selectfont}
+\newcommand{\moderatelyhuge}{\fontsize{50}{60}\selectfont}
+\newcommand{\reasonablyhuge}{\fontsize{30}{40}\selectfont}
+
+\newfontfamily\booktitlefont[RawFeature={-ss02},LetterSpace=40,WordSpace=6]{EB Garamond}
+\newfontfamily\spacedfont[RawFeature={-ss02},LetterSpace=20,WordSpace=3]{EB Garamond}
+
+
+%\newfontfamily\oldfont{IMFeENrm29P.ttf}
+\newfontfamily\oldfont{Essays 1743}
+\newfontfamily\lettrinefont{apex-lake.regular.ttf}
+\newfontfamily\headerfont{EB Garamond}
+\newfontfamily\chapterfont{EB Garamond}
+%\newfontfamily\headerfont{Linux Libertine}
+%\newfontfamily\chapterfont{Linux Libertine}
+
+\renewcommand*{\chaptermarkformat}{}
+%\renewcommand*{\chapterheadendvskip}{\vspace{10pt}}
+\renewcommand*{\chapterheadstartvskip}{\vspace{0pt}}
+
+
+\renewcommand{\LettrineFontHook}{\fontspec{apex-lake.regular.ttf}}
+
+\defaultfontfeatures{Ligatures=TeX}
+%\addtokomafont{part}{libertine}
+%\addtokomafont{partnumber}{libertine}
+\addtokomafont{part}{ebgaramond}
+\addtokomafont{partnumber}{ebgaramond}
+
+\automark{chapter}
+\lehead{The Hound of the Baskervilles}
+\rohead{Chapter \thechapter: \leftmark}
+
+\headsep=10pt
+\headheight=45pt
+\footskip=30pt
+%\raggedbottom
+
+\setkomafont{chapter}{\chapterfont\Huge\bfseries}
+%\renewcommand*{\chaptermarkformat}{%
+%
+%\chapapp~\thechapter\autodot\enskip}
+
+\hyphenation{Bask-er-ville Bask-er-villes}
+
+\addtokomafont{disposition}{\normalfont}
+
+\graphicspath{ {./images/} }
+\captionsetup[figure]{font=sc}
+\captionsetup{labelformat=empty}
+
+\begin{document}
+\KOMAoptions{headings=openany}
+\renewcommand*\raggedchapter{\centering}
+\thispagestyle{empty}
+%\begin{figure}[p]
+%\centering
+%%\begin{minipage}[c]{1.2\linewidth}
+%\includegraphics[width=1.1\linewidth]{frontispiece}
+%%\end{minipage}
+%\end{figure}
+
+  \begin{titlepage}
+   \recalctypearea
+ \newgeometry{left=10mm,right=10mm,top=7mm, bottom=7mm}
+
+  \begin{center}\setstretch{1.8}\scshape\bfseries
+{\setstretch{1.8}\HUGE The Hound}\\
+\vspace{0.5cm}
+{\setstretch{1.8}\moderatelyhuge of the}\\
+\vspace{0.2cm}
+{\HUGE Baskervilles}\\
+\vspace*{0.1cm}
+ \includegraphics[width=.8\linewidth]{houndfront}
+ \end{center}
+ \vspace*{0.1cm}
+ \begin{center}\setstretch{1.5}\scshape
+{\setstretch{1.5}\reasonablyhuge Sir Arthur Conan Doyle}\\
+\vspace{0.5cm}
+{\setstretch{1.5}\Huge Illustrated by Sidney Paget}
+\end{center}
+  \end{titlepage}
+
+
+  \recalctypearea
+\restoregeometry
+
+\chapter*{Dedication}
+\thispagestyle{empty}
+My dear Robinson,\\
+
+It was to your account of a West-Country legend that this tale owes its inception. For this and for your help in the details all thanks.
+
+\begin{flushright}
+Yours most truly,\\
+\textsc{A. Conan Doyle.}
+\end{flushright}
+
+{\noindent Hindhead,\\}
+    Haslemere.
+  
+\clearpage
+
+%\DeclareTOCStyleEntry[option list ]{style }{entry level }
+%\RedeclareSectionCommand[beforeskip=0pt,afterskip=\baselineskip,innerskip=0pt,afterindent=false]{chapter}
+
+\DeclareTOCStyleEntry[linefill=\TOCLineLeaderFill]{chapter}{chapter}
+
+\tableofcontents
+\thispagestyle{empty}
+\clearpage
+\vfill
+\begin{figure}[ph!]
+\centering
+\includegraphics[width=\linewidth]{02_storyread}
+\caption{Dr Mortimer turned the manuscript to the light and read}
+\end{figure}
+\vfill
+\thispagestyle{empty}
+\clearpage
+
+
+%\renewcommand{\listfigurename}{List of Illustrations}
+%\renewcommand{\cftloftitlefont}{\hfill\Huge\bfseries}
+%\renewcommand{\cftafterloftitle}{\hfill}
+%\listoffigures
+\pagestyle{headings}
+\renewcommand*{\chapterpagestyle}{plain}
+
+\KOMAoptions{headings=openright}
+\include{chapters/01.tex}
+\include{chapters/02.tex}
+\include{chapters/03.tex}
+\include{chapters/04.tex}
+\include{chapters/05.tex}
+\include{chapters/06.tex}
+\include{chapters/07.tex}
+\include{chapters/08.tex}
+\include{chapters/09.tex}
+\include{chapters/10.tex}
+\include{chapters/11.tex}
+\include{chapters/12.tex}
+\include{chapters/13.tex}
+\include{chapters/14.tex}
+\include{chapters/15.tex}
+
+%\KOMAoptions{DIV=default}
+%   \recalctypearea
+% \newgeometry{left=10mm,right=10mm,top=7mm, bottom=7mm}
+
+
+%\KOMAoptions{headings=openright}
+%  \recalctypearea
+%\restoregeometry
+
+\KOMAoptions{headings=openleft}
+\chapter*{Colophon}
+
+\centering
+
+EB Garamond is Georg Mayr-Duffner's free and open source implementation of Claude Garamont’s famous humanist typefaces from the mid-16\textsuperscript{th} century. This digital version reproduces the original design by Claude Garamont closely: the source for the letterforms is a scan of a specimen known as the \enquote{Berner specimen}, which was composed in 1592 by Conrad Berner, the son-in-law of Christian Egenolff and his successor at the Egenolff print office. \\
+github.com/georgd/EB-Garamond
+\vfill
+The Hugo Baskerville story in chapter 2 is set in John Stracke's font \oldfont Essays 1743,~\normalfont based on an English translation of Montaigne's \textit{Essays} published in 1743.\\
+www.thibault.org/fonts/essays
+\vfill
+Dropcaps are set in JLH Fonts' Apex Lake, based on Linux Libertine.\\
+jlhfonts.blogspot.com
+\vfill
+Photograph \enquote{Dartmoor Tor} on page \pageref{tor} was cropped and lightened from an original by Peter Castleton, and is used with gratitude under a CC-BY-2.0-DEED license. \\
+creativecommons.org/licenses/by/2.0/deed.en\\
+flickr.com/photos/petercastleton/2995927031
+\vfill
+Typeset in \LaTeX{}.
+\thispagestyle{empty}
+\end{document}
