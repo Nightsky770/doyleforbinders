@@ -39,7 +39,7 @@ If you are using A4 paper, download the following files and print out, double-si
 * hounda4.signature13.pdf
 * hounda4.signature14.pdf
 
-The TeX originals are included in the source directory as letterhound.tex and a4hound.tex. They expect to find their images in a subfolder called "images".
+The TeX originals (chapter and parent file) are in the "source" directory. They expect to find their images in a subfolder called "images".
 
 Fonts used are:
 * EB Garamond https://www.1001freefonts.com/eb-garamond.font
