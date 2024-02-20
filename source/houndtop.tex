@@ -1,6 +1,6 @@
 \documentclass[
 %paper=5.5in:8.5in,
-paper=a5,
+a5paper,
 BCOR=7mm,
 twoside,
 DIV=calc,
@@ -33,7 +33,10 @@ headings=big]{scrbook} % Document font size and paper size
 \usepackage[pass]{geometry}
 \usepackage{microtype}
 \usepackage[all]{nowidow}
+\usepackage{subfiles}
 %\usepackage[showframe]{geometry}
+
+\MakeAutoQuote{»}{«}
 
 \newcommand\longdash{\mbox{---\,}\ignorespaces{}}
 
@@ -42,8 +45,8 @@ headings=big]{scrbook} % Document font size and paper size
 \newcommand{\moderatelyhuge}{\fontsize{50}{60}\selectfont}
 \newcommand{\reasonablyhuge}{\fontsize{30}{40}\selectfont}
 
-\newfontfamily\booktitlefont[RawFeature={-ss02},LetterSpace=40,WordSpace=6]{EB Garamond}
-\newfontfamily\spacedfont[RawFeature={-ss02},LetterSpace=20,WordSpace=3]{EB Garamond}
+%\newfontfamily\booktitlefont[RawFeature={-ss02},LetterSpace=40,WordSpace=6]{EB Garamond}
+%\newfontfamily\spacedfont[RawFeature={-ss02},LetterSpace=20,WordSpace=3]{EB Garamond}
 
 
 %\newfontfamily\oldfont{IMFeENrm29P.ttf}
@@ -51,8 +54,24 @@ headings=big]{scrbook} % Document font size and paper size
 \newfontfamily\lettrinefont{apex-lake.regular.ttf}
 \newfontfamily\headerfont{EB Garamond}
 \newfontfamily\chapterfont{EB Garamond}
-%\newfontfamily\headerfont{Linux Libertine}
-%\newfontfamily\chapterfont{Linux Libertine}
+
+
+\newcount\zzc
+\makeatletter
+\def\zz{%
+\ifnum\prevgraf<\c@L@lines
+\zzc\z@
+\loop
+\ifnum\zzc<\prevgraf
+\advance\zzc\@ne
+\afterassignment\zzda\count@\L@parshape\relax
+\repeat
+\parshape\L@parshape
+\fi}
+\def\zzda{\afterassignment\zzdb\dimen@}
+\def\zzdb{\afterassignment\zzdef\dimen@}
+\def\zzdef#1\relax{\edef\L@parshape{\the\numexpr\count@-1\relax\space #1}}
+\makeatother
 
 \renewcommand*{\chaptermarkformat}{}
 %\renewcommand*{\chapterheadendvskip}{\vspace{10pt}}
