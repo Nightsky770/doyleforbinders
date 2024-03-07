@@ -4,7 +4,7 @@ a5paper,
 BCOR=7mm,
 twoside,
 DIV=calc,
-12pt,
+11pt,
 usegeometry,
 chapterprefix,
 endperiod,
@@ -34,11 +34,14 @@ headings=big]{scrbook} % Document font size and paper size
 \usepackage{microtype}
 \usepackage[all]{nowidow}
 \usepackage{subfiles}
+
 %\usepackage[showframe]{geometry}
 
 \MakeAutoQuote{»}{«}
-
+\catcode`\—=13
+\protected\def—{\allowbreak\textemdash\allowbreak}
 \newcommand\longdash{\mbox{---\,}\ignorespaces{}}
+
 
 \setdefaultlanguage[variant=uk]{english}
 \newcommand{\HUGE}{\fontsize{50}{60}\selectfont}
@@ -55,6 +58,14 @@ headings=big]{scrbook} % Document font size and paper size
 \newfontfamily\headerfont{EB Garamond}
 \newfontfamily\chapterfont{EB Garamond}
 
+\makeatletter
+\@ifclasswith{scrbook}{a5paper}
+{%
+  \def\picsize{\linewidth}
+}{%
+  \def\picsize{1.2\textwidth}
+}
+\makeatother
 
 \newcount\zzc
 \makeatletter
@@ -167,7 +178,10 @@ Yours most truly,\\
 
 \tableofcontents
 \thispagestyle{empty}
-\clearpage
+
+
+%frontispiece dangles off in front of chap 1
+\cleardoubleevenpage
 \vfill
 \begin{figure}[ph!]
 \centering
@@ -179,10 +193,6 @@ Yours most truly,\\
 \clearpage
 
 
-%\renewcommand{\listfigurename}{List of Illustrations}
-%\renewcommand{\cftloftitlefont}{\hfill\Huge\bfseries}
-%\renewcommand{\cftafterloftitle}{\hfill}
-%\listoffigures
 \pagestyle{headings}
 \renewcommand*{\chapterpagestyle}{plain}
 
@@ -220,7 +230,7 @@ Yours most truly,\\
 EB Garamond is Georg Mayr-Duffner's free and open source implementation of Claude Garamont’s famous humanist typefaces from the mid-16\textsuperscript{th} century. This digital version reproduces the original design by Claude Garamont closely: the source for the letterforms is a scan of a specimen known as the \enquote{Berner specimen}, which was composed in 1592 by Conrad Berner, the son-in-law of Christian Egenolff and his successor at the Egenolff print office. \\
 github.com/georgd/EB-Garamond
 \vfill
-The Hugo Baskerville story in chapter 2 is set in John Stracke's font \oldfont Essays 1743,~\normalfont based on an English translation of Montaigne's \textit{Essays} published in 1743.\\
+The Hugo Baskerville story in chapter 2 is set in John Stracke's font »Essays 1743«, based on an English translation of Montaigne's \textit{Essays} published in 1743.\\
 www.thibault.org/fonts/essays
 \vfill
 Dropcaps are set in JLH Fonts' Apex Lake, based on Linux Libertine.\\
