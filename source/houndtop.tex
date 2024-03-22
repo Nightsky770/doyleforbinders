@@ -1,6 +1,6 @@
 \documentclass[
-%paper=5.5in:8.5in,
-a5paper,
+paper=5.5in:8.5in,
+%a5paper,
 BCOR=7mm,
 twoside,
 DIV=calc,
@@ -34,6 +34,7 @@ headings=big]{scrbook} % Document font size and paper size
 \usepackage{microtype}
 \usepackage[all]{nowidow}
 \usepackage{subfiles}
+\usepackage{floatpag}
 
 %\usepackage[showframe]{geometry}
 
@@ -42,6 +43,7 @@ headings=big]{scrbook} % Document font size and paper size
 \protected\def—{\allowbreak\textemdash\allowbreak}
 \newcommand\longdash{\mbox{---\,}\ignorespaces{}}
 
+\floatpagestyle{empty}
 
 \setdefaultlanguage[variant=uk]{english}
 \newcommand{\HUGE}{\fontsize{50}{60}\selectfont}
@@ -51,19 +53,22 @@ headings=big]{scrbook} % Document font size and paper size
 %\newfontfamily\booktitlefont[RawFeature={-ss02},LetterSpace=40,WordSpace=6]{EB Garamond}
 %\newfontfamily\spacedfont[RawFeature={-ss02},LetterSpace=20,WordSpace=3]{EB Garamond}
 
+\input Zallman.fd
+\newcommand*\initfamily{\usefont{U}{Zallman}{xl}{n}}
 
 %\newfontfamily\oldfont{IMFeENrm29P.ttf}
 \newfontfamily\oldfont{Essays 1743}
-\newfontfamily\lettrinefont{apex-lake.regular.ttf}
+\newfontfamily\lettrinefont{Zallman}
+\renewcommand{\LettrineFontHook}{\fontspec{Zallman}}
 \newfontfamily\headerfont{EB Garamond}
 \newfontfamily\chapterfont{EB Garamond}
 
 \makeatletter
 \@ifclasswith{scrbook}{a5paper}
 {%
-  \def\picsize{\linewidth}
+  \def\picsize{\textwidth}
 }{%
-  \def\picsize{1.2\textwidth}
+  \def\picsize{\textwidth}
 }
 \makeatother
 
@@ -89,7 +94,7 @@ headings=big]{scrbook} % Document font size and paper size
 \renewcommand*{\chapterheadstartvskip}{\vspace{0pt}}
 
 
-\renewcommand{\LettrineFontHook}{\fontspec{apex-lake.regular.ttf}}
+
 
 \defaultfontfeatures{Ligatures=TeX}
 %\addtokomafont{part}{libertine}
@@ -181,12 +186,17 @@ Yours most truly,\\
 
 
 %frontispiece dangles off in front of chap 1
+
+
 \cleardoubleevenpage
 \vfill
 \begin{figure}[ph!]
-\centering
-\includegraphics[width=\linewidth]{02_storyread}
-\caption{Dr Mortimer turned the manuscript to the light and read}
+	\centering
+	\includegraphics[width=\picsize]{dartmoortorcropped}
+	\caption{»Dartmoor Tor«—Peter Castleton}
+	\label{tor}
+%\includegraphics[width=\linewidth]{02_storyread}
+%\caption{Dr Mortimer turned the manuscript to the light and read}
 \end{figure}
 \vfill
 \thispagestyle{empty}
@@ -213,12 +223,24 @@ Yours most truly,\\
 \include{chapters/14.tex}
 \include{chapters/15.tex}
 
-%\KOMAoptions{DIV=default}
+\KOMAoptions{DIV=default,headings=openright}
 %   \recalctypearea
 % \newgeometry{left=10mm,right=10mm,top=7mm, bottom=7mm}
-
-
-%\KOMAoptions{headings=openright}
+%
+%	\vspace*{\fill}
+%	%picsize is set in the top document
+%	\begin{figure}[p!]
+%	\includegraphics[width=\picsize]{dartmoortorcropped}
+%	\caption{»Dartmoor Tor«—Peter Castleton}
+%	\label{tor}
+%	\end{figure}
+%	\vspace*{\fill}
+%	\pagestyle{empty}
+%	\clearpage
+%
+%
+%
+%
 %  \recalctypearea
 %\restoregeometry
 
@@ -233,8 +255,7 @@ github.com/georgd/EB-Garamond
 The Hugo Baskerville story in chapter 2 is set in John Stracke's font »Essays 1743«, based on an English translation of Montaigne's \textit{Essays} published in 1743.\\
 www.thibault.org/fonts/essays
 \vfill
-Dropcaps are set in JLH Fonts' Apex Lake, based on Linux Libertine.\\
-jlhfonts.blogspot.com
+Dropcaps are set in Dieter Steffman's »Zallman Caps«.\\steffmann.de
 \vfill
 Photograph \enquote{Dartmoor Tor} on page \pageref{tor} was cropped and lightened from an original by Peter Castleton, and is used with gratitude under a CC-BY-2.0-DEED license. \\
 creativecommons.org/licenses/by/2.0/deed.en\\
