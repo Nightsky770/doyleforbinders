@@ -1,0 +1,214 @@
+\documentclass[
+%paper=5.5in:8.5in,
+a5paper,
+BCOR=7mm,
+twoside,
+DIV=calc,
+11pt,
+usegeometry,
+chapterprefix,
+endperiod,
+headings=big]{scrbook} % Document font size and paper size
+
+%\documentclass[paper=5.5in:8.5in,BCOR=15mm,twoside,DIV=calc,headinclude=off,openany]{scrbook} % Document font size and paper size
+
+\usepackage{polyglossia}
+\usepackage{graphicx}
+\usepackage{lettrine}
+\usepackage{xcolor}
+\usepackage{fontspec}
+%\usepackage[utf8]{inputenc} 
+\usepackage[T1]{fontenc} % International character encodings
+\usepackage{makeidx}
+\usepackage{scrlayer-scrpage}
+\usepackage{pifont}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage[maxlevel=3]{csquotes}
+\usepackage[export]{adjustbox}
+\usepackage{ebgaramond}
+\usepackage{wrapfig}
+\usepackage{afterpage}
+\usepackage{setspace}
+\usepackage[pass]{geometry}
+\usepackage{microtype}
+\usepackage[all]{nowidow}
+\usepackage{subfiles}
+\usepackage{floatpag}
+\usepackage{pdfpages}
+
+%\usepackage[showframe]{geometry}
+
+\MakeAutoQuote{»}{«}
+\catcode`\—=13
+\protected\def—{\allowbreak\textemdash\allowbreak}
+\newcommand\longdash{\mbox{---\,}\ignorespaces{}}
+
+\floatpagestyle{empty}
+
+\setdefaultlanguage[variant=uk]{english}
+\setotherlanguage{french}
+\setotherlanguage{german}
+\newcommand{\HUGE}{\fontsize{50}{60}\selectfont}
+\newcommand{\moderatelyhuge}{\fontsize{50}{60}\selectfont}
+\newcommand{\reasonablyhuge}{\fontsize{30}{40}\selectfont}
+
+%\newfontfamily\booktitlefont[RawFeature={-ss02},LetterSpace=40,WordSpace=6]{EB Garamond}
+%\newfontfamily\spacedfont[RawFeature={-ss02},LetterSpace=20,WordSpace=3]{EB Garamond}
+
+\input Zallman.fd
+\newcommand*\initfamily{\usefont{U}{Zallman}{xl}{n}}
+
+\setmainfont{EB Garamond}[UprightFeatures={CharacterVariant=11}]
+
+\newfontfamily\lettrinefont{Zallman}
+\renewcommand{\LettrineFontHook}{\fontspec{Zallman}}
+\newfontfamily\headerfont{EB Garamond}
+\newfontfamily\chapterfont{EB Garamond}
+
+\newcount\zzc
+\makeatletter
+\def\zz{%
+\ifnum\prevgraf<\c@L@lines
+\zzc\z@
+\loop
+\ifnum\zzc<\prevgraf
+\advance\zzc\@ne
+\afterassignment\zzda\count@\L@parshape\relax
+\repeat
+\parshape\L@parshape
+\fi}
+\def\zzda{\afterassignment\zzdb\dimen@}
+\def\zzdb{\afterassignment\zzdef\dimen@}
+\def\zzdef#1\relax{\edef\L@parshape{\the\numexpr\count@-1\relax\space #1}}
+\makeatother
+
+\renewcommand*{\chaptermarkformat}{}
+%\renewcommand*{\chapterheadendvskip}{\vspace{10pt}}
+%\renewcommand*{\chapterheadstartvskip}{\vspace{0pt}}
+
+
+
+
+\defaultfontfeatures{Ligatures=TeX}
+%\addtokomafont{part}{libertine}
+%\addtokomafont{partnumber}{libertine}
+\addtokomafont{part}{ebgaramond}
+\addtokomafont{partnumber}{ebgaramond}
+
+\automark{chapter}
+\lehead{The Sign of the Four}
+\rohead{Chapter \thechapter: \leftmark}
+
+\headsep=10pt
+\headheight=45pt
+\footskip=30pt
+%\raggedbottom
+
+\setkomafont{chapter}{\chapterfont\Huge\bfseries}
+%\renewcommand*{\chaptermarkformat}{%
+%
+%\chapapp~\thechapter\autodot\enskip}
+
+\hyphenation{}
+
+\addtokomafont{disposition}{\normalfont}
+
+\graphicspath{ {./images/} }
+\captionsetup[figure]{font=sc}
+\captionsetup{labelformat=empty}
+
+\begin{document}
+\KOMAoptions{headings=openany}
+\renewcommand*\raggedchapter{\centering}
+\thispagestyle{empty}
+%\begin{figure}[p]
+%\centering
+%%\begin{minipage}[c]{1.2\linewidth}
+%\includegraphics[width=1.1\linewidth]{frontispiece}
+%%\end{minipage}
+%\end{figure}
+%
+  \begin{titlepage}
+   \includepdf[width=1.1\textwidth]{signfour.png}
+  \end{titlepage}
+
+%
+%  \recalctypearea
+%\restoregeometry
+
+
+%\DeclareTOCStyleEntry[option list ]{style }{entry level }
+%\RedeclareSectionCommand[beforeskip=0pt,afterskip=\baselineskip,innerskip=0pt,afterindent=false]{chapter}
+
+\DeclareTOCStyleEntry[linefill=\TOCLineLeaderFill]{chapter}{chapter}
+
+\tableofcontents
+\thispagestyle{empty}
+
+
+
+\pagestyle{headings}
+\renewcommand*{\chapterpagestyle}{plain}
+
+\KOMAoptions{headings=openright}
+\include{chapters/01.tex}
+\include{chapters/02.tex}
+\include{chapters/03.tex}
+\include{chapters/04.tex}
+\include{chapters/05.tex}
+\include{chapters/06.tex}
+\include{chapters/07.tex}
+\include{chapters/08.tex}
+\include{chapters/09.tex}
+\include{chapters/10.tex}
+\include{chapters/11.tex}
+\include{chapters/12.tex}
+
+
+\KOMAoptions{DIV=default,headings=openright}
+%   \recalctypearea
+% \newgeometry{left=10mm,right=10mm,top=7mm, bottom=7mm}
+%
+%	\vspace*{\fill}
+%	%picsize is set in the top document
+%	\begin{figure}[p!]
+%	\includegraphics[width=\picsize]{dartmoortorcropped}
+%	\caption{»Dartmoor Tor«—Peter Castleton}
+%	\label{tor}
+%	\end{figure}
+%	\vspace*{\fill}
+%	\pagestyle{empty}
+%	\clearpage
+%
+%
+%
+%
+%  \recalctypearea
+%\restoregeometry
+
+\KOMAoptions{headings=openleft}
+\chapter*{Colophon}
+
+\centering
+
+EB Garamond is Georg Mayr-Duffner's free and open source implementation of Claude Garamont’s famous humanist typefaces from the mid-sixteenth century. This digital version reproduces the original design by Claude Garamont closely: the source for the letterforms is a scan of a specimen known as the \enquote{Berner specimen}, which was composed in 1592 by Conrad Berner, the son-in-law of Christian Egenolff and his successor at the Egenolff print office. \\
+github.com/georgd/EB-Garamond
+\vfill
+\rule{0.5\textwidth}{.4pt}
+\vfill
+Dropcaps are set in Dieter Steffman's »Zallman Caps«.\\steffmann.de
+\vfill
+\rule{0.5\textwidth}{.4pt}
+\vfill
+Originally published in the February 1890 edition of \textit{Lippincott's Monthly Magazine} (as \textit{The Sign of the Four: or, The Problem of the Sholtos}), Arthur Conan Doyle (1859-1930) published it as \textit{The Sign of Four} in October 1890. Original publisher was Spencer Blackett in London (UK).
+\vfill
+\rule{0.5\textwidth}{.4pt}
+\vfill
+This typeset is dedicated to the public domain under a Creative Commons CC0 1.0 Universal deed: creativecommons.org/publicdomain/zero/1.0/
+\vfill
+\rule{0.5\textwidth}{.4pt}
+\vfill
+Typeset in \LaTeX{}. Last revised \today.
+\thispagestyle{empty}
+\end{document}
