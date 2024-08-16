@@ -22,11 +22,19 @@
 
 Our friends had already secured a first-class carriage and were waiting for us upon the platform.
 
-\begin{figure}[p]
-\centering
-\includegraphics[width=\textwidth]{06_friends}
-\caption{Waiting for us upon the platform}
-\end{figure}
+\makeatletter
+\@ifclasswith{scrbook}{a5paper}
+{%
+	\begin{figure}[p]
+	\centering
+	\includegraphics[width=\textwidth]{06_friends}
+	\caption{Waiting for us upon the platform}
+	\end{figure}
+}{%
+}
+\makeatother
+
+
 
 »No, we have no news of any kind,« said Dr Mortimer in answer to my friend's questions. »I can swear to one thing, and that is that we have not been shadowed during the last two days. We have never gone out without keeping a sharp watch, and no one could have escaped our notice.«
 
@@ -161,7 +169,7 @@ But the dining-room which opened out of the hall was a place of shadow and gloom
 
 I drew aside my curtains before I went to bed and looked out from my window. It opened upon the grassy space which lay in front of the hall door. Beyond, two copses of trees moaned and swung in a rising wind. A half moon broke through the rifts of racing clouds. In its cold light I saw beyond the trees a broken fringe of rocks, and the long, low curve of the melancholy moor. I closed the curtain, feeling that my last impression was in keeping with the rest.
 
-\begin{figure}[th!]
+\begin{figure}[tbh!]
 \centering
 \includegraphics[width=\textwidth]{06_shadowgloom}
 \caption{The dining-room was a place of shadow and gloom.}

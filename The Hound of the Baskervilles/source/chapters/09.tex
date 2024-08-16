@@ -3,7 +3,7 @@
 
 \lettrine[lines=4]{S}{econd} report of Dr Watson. \\
 \begin{flushright}
-\hfill\begin{minipage}{0.3\linewidth}\textsc{Baskerville Hall\\Oct. 15\textsuperscript{th}.}\end{minipage}
+\hfill\begin{minipage}{0.3\linewidth}\textsc{Baskerville Hall\\Oct. 15th.}\end{minipage}
 \end{flushright}
 %\vspace{5pt}
 
@@ -229,30 +229,34 @@ My blood ran cold in my veins, for there was a break in his voice which told of 
 
 »Who?«
 
-\makeatletter
-\@ifclasswith{scrbook}{a5paper}
-{%
+%\makeatletter
+%\@ifclasswith{scrbook}{a5paper}
+%{%
 %	\begin{figure}[h!]
 %	\centering
-\begin{center}
-	\includegraphics[width=.95\linewidth]{09_evilface}
+%\begin{center}
+%	\includegraphics[width=.95\linewidth]{09_evilface}
 	%\caption{Over the rocks was thrust out an evil yellow face}
-	\captionof{figure}{Over the rocks was thrust out an evil yellow face}
-\end{center}
-\thispagestyle{empty}
-\clearpage
+%	\captionof{figure}{Over the rocks was thrust out an evil yellow face}
+%\end{center}
+%\thispagestyle{empty}
+%\clearpage
 %	\end{figure}
-}{%
+%}{%
 
-}
+%}
 
-\makeatother
+%\makeatother
 
 
 \makeatletter
 \@ifclasswith{scrbook}{a5paper}
 {%
-
+	\begin{figure}[hp]
+	\centering
+	\includegraphics[width=\linewidth]{09_evilface}
+	\caption{Over the rocks was thrust out an evil yellow face}
+	\end{figure}
 }{%
 	\begin{figure}[h!]
 	\centering

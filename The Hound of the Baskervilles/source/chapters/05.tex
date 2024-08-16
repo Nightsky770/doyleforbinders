@@ -30,11 +30,19 @@ The book showed that two names had been added after that of Baskerville. One was
 
 As we came round the top of the stairs we had run up against Sir Henry Baskerville himself. His face was flushed with anger, and he held an old and dusty boot in one of his hands. So furious was he that he was hardly articulate, and when he did speak it was in a much broader and more Western dialect than any which we had heard from him in the morning.
 
-\begin{figure}[p]
-\centering
-\includegraphics[width=\linewidth]{05_oldboot}
-\caption{He held an old and dusty boot in one of his hands}
-\end{figure}
+\makeatletter
+\@ifclasswith{scrbook}{a5paper}
+{%
+	\begin{figure}[p]
+	\centering
+	\includegraphics[width=\linewidth]{05_oldboot}
+	\caption{He held an old and dusty boot in one of his hands}
+	\end{figure}
+}{%
+}
+\makeatother
+
+
 
 »Seems to me they are playing me for a sucker in this hotel,« he cried. »They'll find they've started in to monkey with the wrong man unless they are careful. By thunder, if that chap can't find my missing boot there will be trouble. I can take a joke with the best, Mr Holmes, but they've got a bit over the mark this time.«
 
@@ -336,3 +344,15 @@ John Clayton departed chuckling, and Holmes turned to me with a shrug of his sho
 %\vfill
 %\thispagestyle{empty}
 %\clearpage
+
+\makeatletter
+\@ifclasswith{scrbook}{a5paper}
+{%
+}{%
+	\begin{figure}[p]
+	\centering
+	\includegraphics[width=\textwidth]{06_friends}
+	\caption{Waiting for us upon the platform}
+	\end{figure}
+}
+\makeatother
