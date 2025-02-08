@@ -1,0 +1,157 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{epistolary}
+
+\RequirePackage{etoolbox}
+\RequirePackage{xparse}
+\RequirePackage{fontspec}
+
+
+
+% Mail environment and related commands
+% Usage:
+%\begin{mail}{date}{salutation}
+	% contents of letter
+	% \addPS{postscript}
+	% \addPS{second postscript} (multiple postscripts supported; just keep adding them)
+	% \closeletter[complimentary close]{signature}
+% \end{mail}
+
+\newcounter{pscount}
+
+\newcommand{\processPS}[2]{%
+  \stepcounter{pscount}%
+  \par\noindent{\scshape P%
+  \ifnum\value{pscount}>1
+    \@tempcnta=\value{pscount}%
+    \@tempcnta=\numexpr\@tempcnta-1\relax
+    \loop\ifnum\@tempcnta>0 .P\advance\@tempcnta by -1\repeat
+  \fi
+  .S\@.}~#1\par
+  \ifx\\#2\\%
+    % If no signature, do nothing
+  \else
+    \par\begin{flushright}\textsc{#2}\end{flushright}
+  \fi
+}
+
+\def\@postscripts{}
+
+\newcommand{\addPS}[2][]{%
+  \gappto\@postscripts{\processPS{#2}{#1}}%
+}
+
+\newcommand{\closeletter}[2][]{%
+  \par\bigskip
+  \begin{flushright}
+  \ifx\\#1\\%
+    % If the optional argument is empty, don't add anything
+  \else
+%    #1\par\medskip
+	\parbox{0.7\textwidth}{#1}\par\bigskip
+  \fi
+  \textsc{#2}
+  \end{flushright}
+%  \par\bigskip
+  \setcounter{pscount}{0}%
+  \@postscripts
+}
+
+\newenvironment{mail}[2]
+  {%
+    \gdef\@postscripts{}%
+    \bigskip
+	\begin{quotation}
+    \begin{flushright}\itshape #1\end{flushright}
+    \smallskip
+    
+    \noindent #2
+    
+    \medskip
+  }
+  {%
+	\end{quotation}
+  }
+
+%%% Telegram environment
+% Usage:
+% \begin{telegram}[signature]{date}
+% 	contents of telegram
+% \end{telegram}
+% Both arguments are optional, but to get a signature but not a date you'll need to provide a blank {}:
+% \begin{telegram}[Police-Superintendent Gosling, Ripley.]{}
+	% Party traced London; seen Marylebone Friday. Further information from Scotland Yard.
+% \end{telegram}
+% \begin{telegram}[Art.]{26 May.}
+% 	Count me in every time. I bear messages which will make both your ears tingle.
+% \end{telegram}
+
+\newenvironment{telegram}[2][]
+  {%
+ %   \medskip
+    \begin{flushright}\itshape #2\end{flushright}
+ %   \medskip
+    \begin{flushleft}\scshape
+    \def\@telegramSignature{#1}%
+  }
+  {%
+    \ifx\@telegramSignature\@empty\else
+      \textemdash{} \@telegramSignature
+    \fi
+    \end{flushleft}
+ %   \bigskip
+  }
+
+
+%Diary environment
+%Usage:
+% \begin{diary}{entry date}
+	% content
+% \end{diary}
+
+% Refined diary environment with automatic bigskip
+\newenvironment{diary}[1]
+  {%
+    \par\vspace{\bigskipamount}%
+    \noindent\itshape #1\textemdash\upshape\ignorespaces
+  }
+  {%
+    \par\vspace{\bigskipamount}%
+    \ignorespacesafterend
+  }
+  
+  
+
+% Newspaper environment
+% Usage:
+%\begin{newspaper}{byline}{headline}
+%\end{newspaper}
+
+
+% Helper function to process headlines
+\newcommand{\process@headlines}[1]{%
+  \def\do##1{%
+    \ifx\headlines@first\@empty
+      \gdef\headlines@first{##1}%
+      {\centering\scshape\Large ##1\par\medskip}%
+    \else
+      {\centering\scshape ##1\par}%
+    \fi
+  }%
+  \def\headlines@first{}%
+  \docsvlist{#1}%
+}
+
+% Multi-headline newspaper environment
+\NewDocumentEnvironment{newspaper}{O{}O{}}
+  {%
+    \par\vspace{\medskipamount}%
+    \IfValueT{#2}{\begin{flushright}\itshape #2\end{flushright}}%
+    \IfValueT{#1}{\process@headlines{#1}\medskip}%
+%    \sffamily
+    \ignorespaces
+  }
+  {%
+    \par\vspace{\bigskipamount}%
+  }
+  
+\endinput

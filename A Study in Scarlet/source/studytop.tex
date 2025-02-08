@@ -1,0 +1,94 @@
+\documentclass[
+paper=5.5in:8.5in,
+%a5paper,
+]{scrbook} % Document font size and paper size
+
+\usepackage{bindery}
+\usepackage{dropcaps}
+\usepackage{epistolary}
+\usepackage{tabularx}
+
+\setotherlanguage{french}
+\setotherlanguage{latin}
+
+
+\setdropcaps{Zallman Caps.ttf}
+
+
+\automark{chapter}
+\lehead{A Study in Scarlet}
+\rohead{\leftmark}
+
+\DeclareTOCStyleEntry[linefill=\TOCLineLeaderFill,beforeskip=0.2cm]{chapter}{chapter}
+\DeclareTOCStyleEntry[beforeskip=.3cm,dynnumwidth=true,entryformat=\Large\bfseries]{part}{part}
+
+\setkomafont{chapter}{\chapterfont\Huge\bfseries}
+\setkomafont{part}{\chapterfont\LARGE}
+\setkomafont{partnumber}{\chapterfont\Huge\bfseries}
+
+\hyphenation{}
+
+
+\begin{document}
+\frontmatter
+
+  \begin{titlepage}
+   \includepdf[width=1.2\textwidth]{titlepage2.jpg}
+  \end{titlepage}
+
+
+
+\tableofcontents
+
+
+
+\mainmatter
+
+\part[The Reminiscences of John H. Watson, M.D.]{Being a reprint from the Reminiscences of \textsc{John H. Watson, M.D.},\\Late of the Army Medical Department.}
+\include{chapters/01.tex}
+\include{chapters/02.tex}
+\include{chapters/03.tex}
+\include{chapters/04.tex}
+\include{chapters/05.tex}
+\include{chapters/06.tex}
+\include{chapters/07.tex}
+\part{The Country of the Saints}
+\include{chapters/08.tex}
+\include{chapters/09.tex}
+\include{chapters/10.tex}
+\include{chapters/11.tex}
+\include{chapters/12.tex}
+\include{chapters/13.tex}
+\include{chapters/14.tex}
+
+
+\KOMAoptions{headings=openleft}
+\chapter*{Colophon}
+
+\centering
+\vfill
+\begin{minipage}{\textwidth}
+After first appearing in the 1887 edition of \textit{Beeton's Christmas Annual}, \textit{A Study in Scarlet} was published as a standalone novel in July 1888 by Ward, Lock \& Co. in London (UK). It was Arthur Conan Doyle's (1859--1930) first novel, and introduced Sherlock Holmes and John Watson.
+Title page illustration is from the original publication in \textit{Beeton's Christmas Annual}.
+\end{minipage}
+\vfill
+\rule{0.5\textwidth}{.4pt}
+\vfill
+\begin{minipage}{\textwidth}
+EB Garamond is Georg Mayr-Duffner's free and open source implementation of Claude Garamont’s famous humanist typefaces from the mid-sixteenth century. This digital version reproduces the original design by Claude Garamont closely: the source for the letterforms is a scan of a specimen known as the \enquote{Berner specimen}, which was composed in 1592 by Conrad Berner, the son-in-law of Christian Egenolff and his successor at the Egenolff print office. Dropcaps are set in Dieter Steffman's »Zallman Caps«. Title page (author credit only) is set in »Bolton,« by Paul Lloyd.
+\end{minipage}
+github.com/georgd/EB-Garamond\\
+steffmann.de\\
+moorstation.org/typoasis/designers/lloyd
+\vfill
+\rule{0.5\textwidth}{.4pt}
+\vfill
+\begin{minipage}{\textwidth}
+This typeset is dedicated to the public domain under a Creative Commons CC0 1.0 Universal deed: creativecommons.org/publicdomain/zero/1.0/
+\end{minipage}
+\vfill
+\rule{0.5\textwidth}{.4pt}
+\vfill
+Typeset in \LaTeX{}. Last revised \today.
+\thispagestyle{empty}
+\end{document}
