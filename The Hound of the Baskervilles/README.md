@@ -1,5 +1,5 @@
 # houndforbinders
-*The Hound of the Baskervilles* for the DIY bookbinder. Illustrations by Sidney Paget are from the novel's original serialization in *The Strand* magazine in 1901-1902. Not all illustrations were included as high-quality scans were not always available. Improved scans are welcome!
+*The Hound of the Baskervilles* for the DIY bookbinder. Illustrations by Sidney Paget are from the novel's original serialization in *The Strand* magazine in 1901-1902. The "checkerboard" pattern seen on some images is an artefact of the scanning process that I have not been able to correct in a systematic way. Improved scans would be most welcome.
 
 Text and illustrations are in the public domain in the United States, with the exception of photographer Peter Castleton's (https://flickr.com/photos/petercastleton/) lovely photograph "Dartmoor Tor" (flickr.com/photos/petercastleton/2995927031), a cropped and lightened version of which is used here (with gratitude) under a CC-BY-2.0-DEED license (https://creativecommons.org/licenses/by/2.0/deed.en). 
 
