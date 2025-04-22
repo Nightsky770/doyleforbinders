@@ -3,7 +3,9 @@ paper=5.5in:8.5in,
 %a5paper,
 ]{scrbook} % Document font size and paper size
 
-\usepackage{bindery}
+\title{The Hound of the Baskervilles}
+
+\usepackage[namedChapters]{bindery}
 \usepackage{illustrations}
 \usepackage{dropcaps}
 \usepackage{epistolary}
@@ -11,11 +13,6 @@ paper=5.5in:8.5in,
 \usepackage{adjustbox}
 
 
-\setsansfont[
-Scale=MatchUppercase,
-UprightFont = *-Regular.otf,
-ItalicFont = *-Italic.otf
-]{GilliusADF}
 
 \renewcommand{\HUGE}{\fontsize{50}{60}\selectfont}
 \newcommand{\moderatelyhuge}{\fontsize{50}{60}\selectfont}
@@ -40,18 +37,10 @@ ItalicFont = *-Italic.otf
 \setdropcaps{Zallman Caps.ttf}
 
 
-\renewcommand*{\chaptermarkformat}{}
+%\renewcommand*{\chaptermarkformat}{}
 
 
 
-\automark{chapter}
-\lehead{The Hound of the Baskervilles}
-\rohead{Chapter \thechapter: \leftmark}
-
-\headsep=10pt
-\headheight=45pt
-\footskip=30pt
-%\raggedbottom
 
 \setkomafont{chapter}{\chapterfont\Huge\bfseries}
 
@@ -64,7 +53,7 @@ ItalicFont = *-Italic.otf
 \pagestyle{plain}
 \KOMAoptions{headings=openany}
 
-\includepdf[width=1.3\textwidth]{titlepage.jpg}
+\includepdf[width=\coverwidth]{titlepage.jpg}
 
 \chapter*{Dedication}
 
@@ -92,7 +81,7 @@ Yours most truly,\\
 	\begin{bwbigpic}
 		[1.2] 
 		{dartmoortorcropped}
-		{»Dartmoor Tor«—Peter Castleton}
+		{<Dartmoor Tor>—Peter Castleton}
 		[]
 		[tor]
 	\end{bwbigpic}
@@ -101,7 +90,7 @@ Yours most truly,\\
 	\begin{bwbigpic}
 		[1.1] 
 		{dartmoortorcropped}
-		{»Dartmoor Tor«—Peter Castleton}
+		{<Dartmoor Tor>—Peter Castleton}
 		[]
 		[tor]
 	\end{bwbigpic}
@@ -151,7 +140,7 @@ gutenberg.org/ebooks/2852
 \rule{0.5\textwidth}{.4pt}
 \vfill
 \begin{minipage}{\textwidth}
-Text is set in »EB Garamond«, Georg Mayr-Duffner's free and open source implementation of Claude Garamont’s famous humanist typefaces from the mid-sixteenth century. Dropcaps are set in Dieter Steffman's »Zallman Caps«. The Hugo Baskerville story in chapter 2 is set in John Stracke's »Essays 1743«, based on an English translation of Montaigne's \textit{Essays} published in 1743. The newspaper story in chapter 2 is set in »Gillius,« by Arkandis Digital Foundry, based on »Gill Sans«.
+Text is set in <EB Garamond>, Georg Mayr-Duffner's free and open source implementation of Claude Garamont’s famous humanist typefaces from the mid-sixteenth century. Dropcaps are set in Dieter Steffman's <Zallman Caps>. The Hugo Baskerville story in chapter 2 is set in John Stracke's <Essays 1743>, based on an English translation of Montaigne's \textit{Essays} published in 1743. The newspaper story in chapter 2 is set in <Gillius,> by Arkandis Digital Foundry, based on <Gill Sans>.
 \end{minipage}
 \vfill
 github.com/georgd/EB-Garamond\\
@@ -162,7 +151,7 @@ arkandis.tuxfamily.org/adffonts.html
 \rule{0.5\textwidth}{.4pt}
 \vfill
 \begin{minipage}{\textwidth}
-Photograph \enquote{Dartmoor Tor} on page \pageref{tor} was cropped and lightened from an original by Peter Castleton, and is used with gratitude under a CC-BY-2.0-DEED license: creativecommons.org/licenses/by/2.0/deed.en
+Photograph <Dartmoor Tor> on page \pageref{tor} was cropped and lightened from an original by Peter Castleton, and is used—with appreciation and gratitude—under a CC-BY-2.0-DEED license: creativecommons.org/licenses/by/2.0/deed.en
 \end{minipage}
 \vfill
 flickr.com/photos/petercastleton/2995927031

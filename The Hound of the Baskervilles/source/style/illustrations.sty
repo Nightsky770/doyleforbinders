@@ -1,3 +1,6 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{illustrations}
+
 \RequirePackage{floatpag}
 \RequirePackage{caption}
 \RequirePackage{rotating}
@@ -7,7 +10,6 @@
 \RequirePackage{environ}
 \RequirePackage{xparse}
 \RequirePackage{tikz}
-\RequirePackage{tocbasic}
 
 \usetikzlibrary{positioning,calc}
 
@@ -18,11 +20,29 @@
 \graphicspath{ {./images/} }
 
 
-%allows us to override floatpag's behavior if we need to
+\renewcommand{\listfigurename}{List of Illustrations} 
+%can override this later, but this is usually what we want
 
+\makeatletter
+\renewcommand{\listoffigures}{%
+  \cleardoublepage
+  \chapter*{\listfigurename}%
+  \@mkboth{\listfigurename}{\listfigurename}%
+  \addcontentsline{toc}{chapter}{\protect\numberline{}{\listfigurename}}%
+  \pagestyle{plain}%
+  \@starttoc{lof}%
+  \thispagestyle{plain}%
+}
+\makeatother
 
-\DeclareTOCStyleEntry[beforeskip=.1cm,numwidth=0pt,entrynumberformat=\hideentrynumber,linefill=\TOCLineLeaderFill]{tocline}{figure}
+\DeclareTOCStyleEntry[
+  linefill=\TOCLineLeaderFill,
+  indent=0pt,
+  beforeskip=0.5em,
+  entrynumberformat=\hideentrynumber
+]{tocline}{figure}
 
+%Great big pictures! Yes, they're the same, except that colorbigpic's entries in the LoI will be bolded. Someday I will do this properly by passing in an argument or something.
 %using colorbigpic
 %\begin{colorbigpic}
 %	[1.15] <-desired width, relative to \textwidth
@@ -91,11 +111,15 @@
 \makeatletter
 
 \newcommand{\imagetoc}[2]{%  % #1: image file, #2: scale factor
-  \renewcommand{\contentsname}{\includegraphics[width=#2\linewidth]{#1}}
+  \ifx\relax\detokenize{#2}\relax
+    \PackageWarning{illustrations}{Scale factor missing in \protect\imagetoc{#1}. Using default 0.8}%
+    \renewcommand{\contentsname}{\includegraphics[width=0.8\linewidth]{#1}}%
+  \else
+    \renewcommand{\contentsname}{\includegraphics[width=#2\linewidth]{#1}}%
+  \fi
 }
 
 \newcommand{\imagelof}[3]{%  % #1: image file, #2: ToC text, #3: scale factor
-  \DeclareTOCStyleEntry[level=0,indent=0pt]{tocline}{figure}
   \renewcommand{\listfigurename}{\includegraphics[width=#3\linewidth]{#1}}
   \addcontentsline{toc}{chapter}{#2}
   \renewcommand{\listoffigures}{%
@@ -105,6 +129,7 @@
     \endgroup
   }
 }
+
 
 
 
@@ -122,3 +147,5 @@
 % \imagelof{illustrations}{List of Illustrations}
 % \tableofcontents
 % \listoffigures
+
+
