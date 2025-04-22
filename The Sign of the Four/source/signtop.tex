@@ -1,9 +1,11 @@
 \documentclass[
-paper=5.5in:8.5in,
-%a5paper,
+%paper=5.5in:8.5in,
+a5paper,
 ]{scrbook} % Document font size and paper size
 
-\usepackage{bindery}
+\title{The Sign of the Four}
+
+\usepackage[namedChapters]{bindery}
 \usepackage{dropcaps}
 
 \setotherlanguage{french}
@@ -13,22 +15,11 @@ paper=5.5in:8.5in,
 \setdropcaps{Zallman Caps.ttf}
 
 
-\automark{chapter}
-\lehead{The Sign of the Four}
-\rohead{\leftmark}
-
-
-
-\setkomafont{chapter}{\chapterfont\Huge\bfseries}
-
-\hyphenation{}
-
-
 \begin{document}
 \KOMAoptions{headings=openany}
 
   \begin{titlepage}
-   \includepdf[width=1.1\textwidth]{signfour.png}
+   \includepdf[width=\textwidth]{signfour.png}
   \end{titlepage}
 
 \DeclareTOCStyleEntry[linefill=\TOCLineLeaderFill]{chapter}{chapter}
@@ -69,7 +60,7 @@ Originally published in the February 1890 edition of \textit{Lippincott's Monthl
 \rule{0.5\textwidth}{.4pt}
 \vfill
 \begin{minipage}{\textwidth}
-EB Garamond is Georg Mayr-Duffner's free and open source implementation of Claude Garamont’s famous humanist typefaces from the mid-sixteenth century. This digital version reproduces the original design by Claude Garamont closely: the source for the letterforms is a scan of a specimen known as the \enquote{Berner specimen}, which was composed in 1592 by Conrad Berner, the son-in-law of Christian Egenolff and his successor at the Egenolff print office. Dropcaps are set in Dieter Steffman's »Zallman Caps«.
+EB Garamond is Georg Mayr-Duffner's free and open source implementation of Claude Garamont's famous humanist typefaces from the mid-sixteenth century. This digital version reproduces the original design by Claude Garamont closely: the source for the letterforms is a scan of a specimen known as the <Berner specimen,> which was composed in 1592 by Conrad Berner, the son-in-law of Christian Egenolff and his successor at the Egenolff print office. Dropcaps are set in Dieter Steffman's <Zallman Caps>.
 \end{minipage}
 github.com/georgd/EB-Garamond\\
 steffmann.de
