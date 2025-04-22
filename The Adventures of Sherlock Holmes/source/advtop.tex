@@ -1,0 +1,115 @@
+\documentclass[
+%paper=5.5in:8.5in,
+a5paper,
+]{scrbook} % Document font size and paper size
+
+\title{The Adventures of Sherlock Holmes}
+
+\usepackage[shortStories]{bindery}
+\usepackage{dropcaps}
+\usepackage{illustrations}
+\usepackage{epistolary}
+\usepackage{dialogue}
+
+
+\setdefaultlanguage[variant=uk]{english}
+\setotherlanguage{french}
+
+
+
+
+\setdropcaps{Zallman Caps.ttf}
+
+\renewcommand*{\chaptermarkformat}{}
+%\renewcommand*{\chapterheadendvskip}{\vspace{10pt}}
+\renewcommand*{\chapterheadstartvskip}{\vspace{0pt}}
+\renewcommand{\thechapter}{\Roman{chapter}}
+\renewcommand*{\sectionformat}{}
+\renewcommand*{\chapterformat}{}
+\renewcommand{\thesection}{\arabic{section}}
+
+\begin{document}
+\KOMAoptions{headings=openany}
+
+\frontmatter
+
+  \begin{titlepage}
+   \includepdf[width=\coverwidth]{titlepage.jpg}
+  \end{titlepage}
+
+
+
+
+\DeclareTOCStyleEntry[linefill=\TOCLineLeaderFill,entrynumberformat=\hideentrynumber]{chapter}{chapter}
+\DeclareTOCStyleEntry[linefill=\TOCLineLeaderFill,entrynumberformat=\hideentrynumber]{section}{section}
+\DeclareTOCStyleEntry[linefill=\TOCLineLeaderFill,beforeskip=20pt]{part}{part}
+
+\RedeclareSectionCommand[
+	font=\normalfont\huge,
+%	beforeskip=\vspace*{0pt},
+  afterskip=1.725\baselineskip plus .115\baselineskip minus .192\baselineskip]{section} %default values for chapter, per Koma documentation, which we are applying to section
+
+\RedeclareSectionCommand[
+	font=\normalfont\Huge,
+]{chapter} %embiggen chapter headings relative to section
+
+\cleardoubleoddpage
+
+\tableofcontents
+\thispagestyle{empty}
+\clearpage
+\vfill
+
+
+\mainmatter
+\pagestyle{headings}
+\renewcommand*{\chapterpagestyle}{plain}
+
+\KOMAoptions{headings=openright}
+
+%\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+
+\automark{chapter}
+%\lehead{The Adventures of Sherlock Holmes}
+\rohead{\leftmark: Chapter \thesection}
+
+\include{chapters/01.tex}
+
+\automark{chapter}
+%\lehead{The Adventures of Sherlock Holmes}
+\rohead{\leftmark}
+
+\include{chapters/02.tex}
+\include{chapters/03.tex}
+\include{chapters/04.tex}
+\include{chapters/05.tex}
+\include{chapters/06.tex}
+\include{chapters/07.tex}
+\include{chapters/08.tex}
+\include{chapters/09.tex}
+\include{chapters/10.tex}
+\include{chapters/11.tex}
+\include{chapters/12.tex}
+
+
+\KOMAoptions{headings=openleft}
+\chapter*{Colophon}
+
+\centering
+\textit{The Adventures of Sherlock Holmes}, published in 1892 by George Newnes in London (UK), collected twelve short stories originally published in \textit{The Strand Magazine} between 1891 and 1892. Illustrations by Brazilian-French artist Gaston Simoes de Fonseca (1874--1943) are from the 1909 French editions published by Félix Juven (\textit{Les Premiers Exploits de Sherlock Holmes, Premières Aventures de Sherlock Holmes, Nouvelles Aventures de Sherlock Holmes.}) 
+\vfill
+\rule{0.5\textwidth}{.4pt}
+\vfill
+
+EB Garamond is Georg Mayr-Duffner's free and open source implementation of Claude Garamont’s famous humanist typefaces from the mid-16th century. This digital version reproduces the original design by Claude Garamont closely: the source for the letterforms is a scan of a specimen known as the <Berner specimen,> which was composed in 1592 by Conrad Berner, the son-in-law of Christian Egenolff and his successor at the Egenolff print office. \\
+github.com/georgd/EB-Garamond
+\vfill
+\rule{0.5\textwidth}{.4pt}
+\vfill
+Dropcaps are set in Dieter Steffman's <Zallman Caps>.\\steffmann.de
+\vfill
+\rule{0.5\textwidth}{.4pt}
+\vfill
+Typeset in \LaTeX{}. Last revised \today.
+\thispagestyle{empty}
+\end{document}
