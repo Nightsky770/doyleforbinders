@@ -4,19 +4,29 @@
 \RequirePackage{etoolbox}
 \RequirePackage{xparse}
 \RequirePackage{fontspec}
-
-
+\RequirePackage{needspace}
 
 % Mail environment and related commands
 % Usage:
-%\begin{mail}{date}{salutation}
-	% contents of letter
-	% \addPS{postscript}
-	% \addPS{second postscript} (multiple postscripts supported; just keep adding them)
-	% \closeletter[complimentary close]{signature}
+% \begin{mail}{February 30, 1922}{Dear Sir,}
+% Letter content...
+% \pausemail
+% "By Jove!" I said, shocked at having read such a thing.
+% \resumemail
+% ...more text...
+% \addPS{Don't forget to burn this letter.}
+% \addPS[Jeeves]{The gentleman's wardrobe has been attended to.}
+% \closeletter[Yours sincerely,]{Bertie}
 % \end{mail}
+% You can omit the complimentary close ("Yours sincerely" in the example above) entirely, but you must provide blank arguments to mail if you are omitting one or both of the date or salutation: \begin{mail}{}{} for a letter with no date or salutation.
+% Sadly, the post-scripts need to precede the \closeletter, because that, well, closes the letter.
 
+\newcommand{\pausemail}{\end{quotation}}
+\newcommand{\resumemail}{\begin{quotation}}
+    
 \newcounter{pscount}
+\def\@postscripts{}
+\def\@after@closeletter{}  % Queue for post-signature content
 
 \newcommand{\processPS}[2]{%
   \stepcounter{pscount}%
@@ -34,62 +44,62 @@
   \fi
 }
 
-\def\@postscripts{}
-
 \newcommand{\addPS}[2][]{%
-  \gappto\@postscripts{\processPS{#2}{#1}}%
+\g@addto@macro\@after@closeletter{\processPS{#2}{#1}}%
 }
 
-\newcommand{\closeletter}[2][]{%
-  \par\bigskip
-  \begin{flushright}
-  \ifx\\#1\\%
-    % If the optional argument is empty, don't add anything
-  \else
-%    #1\par\medskip
-	\parbox{0.7\textwidth}{#1}\par\bigskip
-  \fi
-  \textsc{#2}
-  \end{flushright}
-%  \par\bigskip
-  \setcounter{pscount}{0}%
-  \@postscripts
-}
-
+% Improved mail environment with better page breaking
 \newenvironment{mail}[2]
   {%
     \gdef\@postscripts{}%
-    \bigskip
-	\begin{quotation}
+    \gdef\@after@closeletter{}%
+    \par\goodbreak % Allow breaking before the letter
+    \begin{quotation}
+    \needspace{4\baselineskip}
     \begin{flushright}\itshape #1\end{flushright}
-    \smallskip
+    \vspace{0pt plus 0.5ex minus 0.3ex}
     
-    \noindent #2
-    
-    \medskip
+    \noindent #2\par % Changed to \par for better breaking
+    \vspace{5pt plus 0.5ex minus 0.3ex}
+    \interlinepenalty=50 % Allow more breaking within paragraphs
   }
   {%
-	\end{quotation}
+    \end{quotation}\par
+    \goodbreak % Allow breaking after the letter
+    \par\noindent\ignorespaces
   }
+
+\newcommand{\closeletter}[2][]{%
+  \par
+  \needspace{3\baselineskip}
+  \begin{samepage}
+  \begin{flushright}
+  \ifx\\#1\\%
+  \else
+    \nobreak\parbox{0.7\textwidth}{#1}\par
+    \vspace{0.5ex plus 0.5ex minus 0.2ex}
+  \fi
+  \nobreak\textsc{#2}\par
+  \end{flushright}
+  \end{samepage}
+  \setcounter{pscount}{0}%
+  \@after@closeletter
+  \gdef\@after@closeletter{}
+  \par\noindent\ignorespacesafterend
+}
 
 %%% Telegram environment
 % Usage:
 % \begin{telegram}[signature]{date}
-% 	contents of telegram
+%   contents of telegram
 % \end{telegram}
-% Both arguments are optional, but to get a signature but not a date you'll need to provide a blank {}:
-% \begin{telegram}[Police-Superintendent Gosling, Ripley.]{}
-	% Party traced London; seen Marylebone Friday. Further information from Scotland Yard.
-% \end{telegram}
-% \begin{telegram}[Art.]{26 May.}
-% 	Count me in every time. I bear messages which will make both your ears tingle.
-% \end{telegram}
+% Both arguments are optional.
 
-\newenvironment{telegram}[2][]
+\NewDocumentEnvironment{telegram}{O{}O{}}
   {%
- %   \medskip
-    \begin{flushright}\itshape #2\end{flushright}
- %   \medskip
+    \ifx\\#2\\\else
+      \begin{flushright}\itshape #2\end{flushright}
+    \fi
     \begin{flushleft}\scshape
     \def\@telegramSignature{#1}%
   }
@@ -98,60 +108,70 @@
       \textemdash{} \@telegramSignature
     \fi
     \end{flushleft}
- %   \bigskip
   }
 
-
-%Diary environment
-%Usage:
+% Diary environment
+% Usage:
 % \begin{diary}{entry date}
-	% content
+%     content
 % \end{diary}
 
-% Refined diary environment with automatic bigskip
 \newenvironment{diary}[1]
   {%
-    \par\vspace{\bigskipamount}%
+  	\par\vspace{10pt plus 0.5ex minus 0.2ex}%
+%    \par\vspace{\bigskipamount}%
     \noindent\itshape #1\textemdash\upshape\ignorespaces
   }
   {%
-    \par\vspace{\bigskipamount}%
+%    \par\vspace{\bigskipamount}%
+	\par\vspace{10pt plus 0.5ex minus 0.2ex}%
     \ignorespacesafterend
   }
-  
-  
 
 % Newspaper environment
-% Usage:
-%\begin{newspaper}{byline}{headline}
-%\end{newspaper}
+% Usage examples:
+% \begin{newspaper}{Man Bites Dog}
+% Text...
+% \end{newspaper}
+% % With byline
+% \begin{newspaper}[By Our Crime Correspondent]{Man Bites Dog}
+% Text...
+% \end{newspaper}
+% % With byline and subheads
+% \begin{newspaper}[By Our Crime Correspondent]{Man Bites Dog}[Canine Community in Uproar]
+% Text...
+% \end{newspaper}
 
+\newlength{\newspaperbeforeskip}
+\newlength{\newspaperafterskip}
+\newlength{\newspaperheadskip}
+\setlength{\newspaperbeforeskip}{\medskipamount}
+\setlength{\newspaperafterskip}{\bigskipamount}
+\setlength{\newspaperheadskip}{0.5\medskipamount}
 
-% Helper function to process headlines
-\newcommand{\process@headlines}[1]{%
-  \def\do##1{%
-    \ifx\headlines@first\@empty
-      \gdef\headlines@first{##1}%
-      {\centering\scshape\Large ##1\par\medskip}%
-    \else
-      {\centering\scshape ##1\par}%
-    \fi
-  }%
-  \def\headlines@first{}%
-  \docsvlist{#1}%
-}
-
-% Multi-headline newspaper environment
-\NewDocumentEnvironment{newspaper}{O{}O{}}
+\NewDocumentEnvironment{newspaper}{o m o}
   {%
-    \par\vspace{\medskipamount}%
-    \IfValueT{#2}{\begin{flushright}\itshape #2\end{flushright}}%
-    \IfValueT{#1}{\process@headlines{#1}\medskip}%
-%    \sffamily
-    \ignorespaces
+    \par\goodbreak % Allow breaking before article
+    \vspace{\newspaperbeforeskip}%
+    % Byline
+    \IfValueT{#1}{%
+      \begin{flushright}\itshape #1\end{flushright}%
+      \vspace{\newspaperheadskip}%
+    }%
+    % Main headline
+    {\centering\scshape\Large #2\par}%
+    % Additional headlines
+    \IfValueT{#3}{%
+      \vspace{\newspaperheadskip}%
+      {\centering\scshape\large #3\par}%
+    }%
+    \vspace{\newspaperheadskip}%
+	\begin{quotation}
+    \interlinepenalty=100 % Allow more breaking within paragraphs
   }
   {%
-    \par\vspace{\bigskipamount}%
+    \par\goodbreak % Allow breaking after article
+	\end{quotation}
+    \vspace{\newspaperafterskip}%
   }
   
-\endinput
