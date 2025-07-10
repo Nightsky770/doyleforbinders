@@ -32,7 +32,7 @@
 \KOMAoption{DIV}{calc}
 \KOMAoption{usegeometry}{true}
 \KOMAoption{chapterprefix}{true}
-\KOMAoption{headings}{big}
+\KOMAoption{headings}{big,optiontoheadandtoc}
 \KOMAoption{numbers}{noenddot}
 \KOMAoption{listof}{flat,nochaptergap,totoc}
 \KOMAoption{toc}{listof}
@@ -62,18 +62,17 @@
 
 %%% Do the thing! %%%%%%%%%%%%%
 \AtBeginDocument{%
-  % First check if the worktitle option was set and apply it
-  \@ifundefined{bindery@worktitle@}{}{%
-    \setworktitle{\bindery@worktitle@}%
-  }
+
 
   % Set up the headers
   \setupheaders
 }
-%%%%%%% thing doing %%%%%%%%%%%%%%%
+%%%%%%% thing done %%%%%%%%%%%%%%%
 
 
 %Misc setup
+
+\setkomafont{chapter}{\chapterfont\Huge\bfseries}
 
 \newcommand*\hideentrynumber[1]{}
 
@@ -85,7 +84,10 @@
 \catcode`\—=13
 \protected\def—{\textemdash\allowbreak} %allow breaks after an emdash (but not before, because that would be silly)
 \newcommand\longdash{\mbox{—\,}\ignorespaces{}} %corrects issue with lines breaking between dash and end quote
+\newcommand\longdots{\mbox{\textellipsis\,}\ignorespaces{}} %corrects issue with lines breaking between ellipsis and end quote
 \newcommand\doubleemdash{⸺} %because two emdashes concatenated can theoretically break across lines, which is bad
+
+
 
 \renewcommand*{\partformat}{\partname~\thepart} %renew so it doesn't have the trailing period
 
@@ -136,15 +138,43 @@ ItalicFont = *-Italic.otf
   afterskip=1.5\baselineskip
 ]{chapter}
 
+%%%%%%%%%%%%%%% Part heads %%%%%%%%%%%%%%%%
+%Ugly kludge to get a part head to look consistent with the chapter heads as declared above
+\patchcmd\@part
+  {\thepart\hspace{1em}}
+  {\HUGE\bfseries{\partname}\ \thepart\hspace{1em}}
+  {}{}
+
+%%%%%%%%%%%%%%%% Section heads %%%%%%%%%%%%%%%%%%%%%
+% For short stories with chapters. 
+
+\ifbindery@shortStories
+	\RedeclareSectionCommand[
+	  font=\normalfont\LARGE,
+	  style=chapter,
+	  %afterskip=1.725\baselineskip plus .115\baselineskip minus .192\baselineskip
+	]{section} %default values for chapter, per KOMA documentation, which we are applying to section
+
+	% \RedeclareSectionCommand[
+	  % font=\normalfont\Huge,
+	% ]{chapter} %embiggen chapter headings relative to section
+
+	% Make section titles centered like chapters and remove numbering
+	\renewcommand*{\sectionformat}{}  % Remove any automatic numbering format
+	\renewcommand*{\sectionmarkformat}{}  % Remove numbering from marks too
+	\renewcommand*{\sectionlinesformat}[4]{%
+	  \parbox{\textwidth}{\centering#4}%
+	}
+
+	\renewcommand*{\chapterformat}{}  % Remove "Chapter X" from chapter heads
+\fi
+
+
 %%%%%%%%%%%%%%%%%%%%%% Chapter marking setup %%%%%%%%%%%%%%%%%%%%%
 
 \automark{chapter}
 
 \def\bindery@title{}
-
-\newcommand{\setworktitle}[1]{%
-  \def\bindery@title{#1}%
-}
 
 \headsep=10pt
 \headheight=45pt
@@ -152,66 +182,60 @@ ItalicFont = *-Italic.otf
 
 % Command to setup all the headers
 \newcommand{\setupheaders}{%
-  % Check if a title is manually set via \setworktitle
-  \ifx\bindery@title\@empty
-    % If not, check if we have a document title
     \@ifundefined{@title}{%
-      \lehead{}% Fallback if no title is defined
+      \lehead{}% If no title is given, just leave blank
     }{%
       \lehead{\@title}% Use document title from \title command
     }%
-  \else
-    \lehead{\bindery@title}% Use manually set title
-  \fi
+
   
   % Handle chapter marks based on options
-  	\ifbindery@shortStories
-		% Short stories have titles only, and no chapter numbers.
-		\renewcommand{\chaptermark}[1]{%
-			\markboth{##1}{}%
-		}
-	\else
-	  \ifbindery@namedChapters
-		\ifbindery@romanChapters
-			% Roman numerals for chapters: TRUE; chapters have titles: TRUE
-			% "Chapter V: My Adventure Continues" (will appear in header as "Chapter 5", because it's a pain to constantly have to stop and translate Roman numerals when reading)
-			\renewcommand{\thechapter}{\Roman{chapter}}
-			\renewcommand{\chaptermark}[1]{%
-			\markboth{\chaptername\ \arabic{chapter}:\ ##1}{}%
-		  }
-		\else
-		   % Roman numerals for chapters: FALSE; chapters have titles: TRUE
-			% "Chapter 2: Stuff Happens"
-		  \renewcommand{\chaptermark}[1]{%
-			\markboth{\chaptername\ \thechapter:\ ##1}{}%
-		  }
-		\fi
-	  \else
-		\ifbindery@romanChapters
-			% Roman numerals for chapters: TRUE; chapters have titles: FALSE
-			% "Chapter XLIX" (will appear in header as "Chapter 49", because it's a pain to constantly have to stop and translate Roman numerals when reading)
-			\renewcommand{\thechapter}{\Roman{chapter}}
-			\renewcommand{\chaptermark}[1]{%
-			\markboth{\chaptername\ \arabic{chapter}}{}%
-		  }
-		\else
-		  % Roman numerals for chapters: FALSE; chapters have titles: FALSE
-		  % "Chapter 3"
-		  \renewcommand{\chaptermark}[1]{%
-			\markboth{\chaptername\ \thechapter}{}%
-		  }
-		\fi
-	  \fi
-	\fi
-  % Set right header on odd pages to chapter info
-  \rohead{\leftmark}
+  \ifbindery@shortStories
+    
+    \renewcommand*{\chaptermarkformat}{}  % Remove chapter number from headers
+    
+    % Set right header to show right mark (which will be chapter:section when available)
+    \rohead{\rightmark}
+  \else
+    \ifbindery@namedChapters
+      \ifbindery@romanChapters
+        % Roman numerals for chapters: TRUE; chapters have titles: TRUE
+        \renewcommand{\thechapter}{\Roman{chapter}}
+        \renewcommand{\chaptermark}[1]{%
+        \markboth{\chaptername\ \arabic{chapter}:\ ##1}{}%
+        }
+      \else
+         % Roman numerals for chapters: FALSE; chapters have titles: TRUE
+        \renewcommand{\chaptermark}[1]{%
+        \markboth{\chaptername\ \thechapter:\ ##1}{}%
+        }
+      \fi
+    \else
+      \ifbindery@romanChapters
+        % Roman numerals for chapters: TRUE; chapters have titles: FALSE
+        \renewcommand{\thechapter}{\Roman{chapter}}
+        \renewcommand{\chaptermark}[1]{%
+        \markboth{\chaptername\ \arabic{chapter}}{}%
+        }
+      \else
+        % Roman numerals for chapters: FALSE; chapters have titles: FALSE
+        \renewcommand{\chaptermark}[1]{%
+        \markboth{\chaptername\ \thechapter}{}%
+        }
+      \fi
+    \fi
+    % Set right header on odd pages to chapter info (for non-short stories)
+    \rohead{\leftmark}
+  \fi
 }
+
+
 %%%%%%%%%%%%%%%% end of chapter marking setup %%%%%%%%%%%%%%%%
 
 
 %%%% Other stuffs %%%%%%%%%%%
 
-% Supports output in pounds-shillings-pence for use in historical British works. Usage: 
+% Oldmoney: Outputs numbers formatted in pounds-shillings-pence for use in historical British works. Usage: 
 % \oldmoney{1}{7}{9} -> £1 7s. 9d. (with "s." and "d." italicized)
 % You can leave any of the three arguments blank. The command will assume the blank value is zero and silently suppress it:
 % \oldmoney{60}{}{1} -> £60 1d.
@@ -243,10 +267,6 @@ ItalicFont = *-Italic.otf
   \endgroup
 }
 
-%Ugly kludge to get a part head to look consistent with the chapter heads as declared above
-\patchcmd\@part
-  {\thepart\hspace{1em}}
-  {\HUGE\bfseries{\partname}\ \thepart\hspace{1em}}
-  {}{}
+
 
   \makeatother
