@@ -13,8 +13,4 @@ If you are using A4, download the "a4" folder containing the signatures and prin
 
 The TeX originals (per-chapter files and parent file) are in the "source" directory. You do not need the source files unless you are making your own version.
 
-Fonts used are:
-* EB Garamond https://www.1001freefonts.com/eb-garamond.font
-* Essays 1743 https://www.thibault.org/fonts/essays
-  *  *Important!* You must use v2.0 or above or you will not get the emdash.
-* Zallman Caps https://www.1001fonts.com/zallman-caps-font.html
+
